@@ -1,0 +1,32 @@
+{
+  "name": "Shaxmat qirolligi",
+  "short_name": "Shaxmat",
+  "lang": "uz",
+  "description": "Bolalar uchun shaxmat o'quv dasturi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFF9EE",
+  "theme_color": "#1F3B57",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

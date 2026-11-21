@@ -1,0 +1,2085 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#1F3B57">
+<meta name="description" content="Bolalar uchun shaxmat o'quv dasturi: 24 dars, topshiriqlar, masalalar, o'zbekcha ovoz.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Shaxmat">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Shaxmat qirolligi</title>
+<style>
+:root{--navy:#1F3B57;--gold:#E0A526;--teal:#2E7D6B;--red:#B5523B;--bg:#FFF9EE;--card:#FFFFFF;--ink:#24303C;--muted:#6B7785;
+  --sqL:#F3E3C7;--sqD:#C9A27A;--bs:min(92vw,58vh,540px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#app{max-width:980px;margin:0 auto;padding:0 12px 28px;min-height:100vh;display:flex;flex-direction:column}
+button{font-family:inherit;cursor:pointer}
+.pc{font-family:"Segoe UI Symbol","Noto Sans Symbols 2","DejaVu Sans","Arial Unicode MS",serif;line-height:1;display:inline-block;user-select:none}
+.pc.w{position:relative}
+.pc.w .f{color:#fff;text-shadow:0 2px 2px rgba(0,0,0,.2)}
+.pc.w .o{position:absolute;left:0;top:0;color:#1d1d1d}
+.pc.b{color:#1d1d1d;text-shadow:0 2px 2px rgba(0,0,0,.25)}
+
+/* Bosh sahifa */
+.hero{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1F3B57,#2A4E72);color:#fff;border-radius:0 0 22px 22px;padding:16px 18px;margin:0 -12px 14px}
+.hero h1{margin:0;font-size:clamp(22px,5vw,32px)}.hero p{margin:2px 0 0;opacity:.85}
+.hero .crown .pc{font-size:48px}.hero .crown .pc .f{color:var(--gold)}.hero .crown .pc .o{color:#8a5a00}
+.rank{margin-left:auto;background:rgba(255,255,255,.12);border-radius:14px;padding:6px 12px;text-align:center;min-width:80px}
+.rank .pc{font-size:34px;display:block}.rank b{font-size:14px;color:var(--gold)}.rank small{opacity:.8}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.quick button .cnt{font-size:.75em}
+.quick button{flex:1 1 160px;border:0;border-radius:14px;padding:13px;font-size:16px;font-weight:700;background:#fff;color:var(--navy);box-shadow:0 2px 0 #e3d7c2}
+.mod h3{margin:16px 4px 8px;font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.lsn{position:relative;border:0;border-radius:18px;background:#fff;padding:12px 8px 10px;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:0 3px 0 var(--mc);border-top:6px solid var(--mc);transition:transform .1s}
+.lsn:active{transform:scale(.97)}
+.lsn .num{position:absolute;left:8px;top:6px;font-weight:800;color:var(--mc);font-size:15px}
+.lsn .lg .pc{font-size:44px}.lsn .lt{font-size:13px;font-weight:600;text-align:center;min-height:34px;line-height:1.25}
+.lsn .st{color:var(--gold);font-size:18px;letter-spacing:1px}
+.lsn.lock{opacity:.45;filter:grayscale(.6)}.lsn.done{background:#FFFDF6}
+
+/* Ramka */
+.bar{display:flex;align-items:center;gap:10px;padding:10px 0}
+.ic{border:0;background:#fff;border-radius:12px;width:46px;height:46px;font-size:24px;box-shadow:0 2px 0 #e3d7c2;color:var(--navy)}
+.ttl{font-weight:800;font-size:clamp(15px,3.6vw,20px);color:var(--navy);flex:1}
+.prog{display:flex;gap:5px}.prog i{width:12px;height:12px;border-radius:50%;background:#e3d7c2}.prog i.on{background:var(--teal)}.prog i.cur{background:var(--gold)}
+.prompt{background:#fff;border-radius:16px;padding:12px 14px;font-size:clamp(16px,3.8vw,21px);font-weight:600;line-height:1.35;box-shadow:0 2px 0 #e3d7c2;margin-bottom:10px}
+.prompt{display:flex;align-items:center;gap:10px}
+.say{flex:none;border:0;border-radius:50%;width:44px;height:44px;font-size:22px;background:var(--gold);box-shadow:0 3px 0 #b07f12}
+.say:active{transform:scale(.92)}
+.intro #say2{margin-top:10px}
+.cnt{display:inline-block;background:var(--navy);color:#fff;border-radius:10px;padding:2px 9px;font-size:.8em;margin-left:6px;white-space:nowrap}
+.coordq{display:inline-block;background:var(--gold);color:#fff;border-radius:10px;padding:0 12px;font-size:1.5em;font-weight:800}
+.body{display:flex;flex-direction:column;align-items:center;gap:12px;flex:1}
+.foot{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;padding-top:12px}
+.side{font-weight:700;color:var(--muted)}
+.btn{border:0;border-radius:14px;padding:12px 20px;font-size:17px;font-weight:700;background:var(--teal);color:#fff;box-shadow:0 3px 0 #1d5a4c}
+.btn.big{font-size:20px;padding:14px 30px}.btn.ghost{background:#fff;color:var(--navy);box-shadow:0 3px 0 #e3d7c2}
+.btn.danger{color:#B5523B}
+
+/* Taxta */
+.board{position:relative;width:var(--bs);height:var(--bs);display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);border:7px solid #6b4a2b;border-radius:10px;box-shadow:0 6px 0 #4a321c;overflow:hidden;touch-action:manipulation}
+.board.small{--bs:min(86vw,46vh,420px)}
+.sq{position:relative;display:flex;align-items:center;justify-content:center}
+.sq.l{background:var(--sqL)}.sq.d{background:var(--sqD)}
+.sq .pc{font-size:calc(var(--bs) / 8 * .8);position:relative;z-index:2;animation:pop .18s ease-out}
+.sq.sel{box-shadow:inset 0 0 0 4px #2F6FD0}
+.sq.last::before{content:"";position:absolute;inset:0;background:rgba(255,214,0,.35)}
+.sq.ok::before{content:"";position:absolute;inset:0;background:rgba(46,160,67,.6)}
+.sq.bad::before{content:"";position:absolute;inset:0;background:rgba(214,59,48,.6);animation:shake .3s}
+.sq.hint::before{content:"";position:absolute;inset:0;background:rgba(224,165,38,.7);animation:blink .45s 2}
+.sq.chk::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(230,30,30,.85) 0,rgba(230,30,30,.2) 70%)}
+.sq .dot{position:absolute;width:30%;height:30%;border-radius:50%;background:rgba(30,122,60,.55);z-index:3}
+.sq .dot.cap{width:86%;height:86%;background:transparent;border:5px solid rgba(30,122,60,.6)}
+.sq .mk{position:absolute;font-style:normal;font-size:calc(var(--bs) / 8 * .58);z-index:1}
+.sq .stone{width:76%;height:66%;border-radius:40%;background:radial-gradient(circle at 35% 30%,#a7a7a7,#5e5e5e);box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+.rk,.fl{position:absolute;font-size:calc(var(--bs) / 8 * .2);font-weight:700;color:rgba(60,40,20,.65);z-index:4}
+.rk{left:3px;top:2px}.fl{right:4px;bottom:1px}
+.arrows{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+
+/* Kirish, tanlov */
+.intro{background:#fff;border-radius:22px;padding:22px;text-align:center;box-shadow:0 3px 0 #e3d7c2;width:min(100%,560px)}
+.intro .big .pc{font-size:110px}.intro h2{margin:6px 0 10px;color:var(--navy);font-size:clamp(22px,5vw,30px)}
+.intro p{font-size:clamp(17px,4vw,21px);line-height:1.45;margin:6px 0}.intro .tasks{color:var(--muted);font-size:15px}
+.stars{font-size:54px;color:var(--gold);letter-spacing:4px}.stars span{color:#e3d7c2}
+.newrank{margin-top:10px;background:#FFF4D6;border-radius:16px;padding:10px}.newrank .pc{font-size:64px}
+.opts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.opts.col{flex-direction:column;width:min(100%,360px)}
+.opt{border:0;border-radius:16px;background:#fff;min-width:110px;padding:14px 22px;font-size:22px;font-weight:800;color:var(--navy);box-shadow:0 4px 0 #e3d7c2;transition:transform .1s}
+.opt.glyph{display:flex;flex-direction:column;align-items:center;min-width:120px}.opt.glyph .pc{font-size:72px}.opt.glyph small{font-size:15px}
+.opt.ok{background:#2EA043;color:#fff;box-shadow:0 4px 0 #1f7a31}.opt.bad{background:#D63B30;color:#fff;animation:shake .3s}
+.bigq{font-size:clamp(30px,8vw,48px);font-weight:800;color:var(--navy);margin:20px}
+.note{margin:0;font-size:17px;font-weight:600;color:var(--red)}
+.trayrow{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.tray{border:0;background:#fff;border-radius:12px;width:58px;height:62px;box-shadow:0 3px 0 #e3d7c2}.tray .pc{font-size:44px}
+.tray.on{background:#FFE59A;transform:translateY(-4px)}
+
+/* Bildirishnomalar */
+.toast{position:fixed;left:50%;top:18%;transform:translateX(-50%);background:#2EA043;color:#fff;font-size:clamp(20px,5vw,28px);font-weight:800;padding:14px 26px;border-radius:18px;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.2);animation:pop .2s;text-align:center;max-width:90vw}
+.toast.bad{background:#D63B30;font-size:clamp(17px,4vw,22px)}
+.modal{position:fixed;inset:0;background:rgba(20,30,45,.55);display:flex;align-items:center;justify-content:center;z-index:40;padding:16px}
+.modal .card{background:#fff;border-radius:22px;padding:24px;text-align:center;max-width:440px}
+.modal h2{color:var(--navy);margin:0 0 6px}.modal .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:10px;height:16px;border-radius:3px;animation:fall 2.2s ease-in forwards}
+
+/* Sozlamalar, sertifikat */
+.setbox{width:min(100%,560px);display:flex;flex-direction:column;gap:10px}
+.set{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:14px;padding:14px;font-size:17px;font-weight:600;box-shadow:0 2px 0 #e3d7c2}
+.set input{width:26px;height:26px}
+.seg{display:flex;gap:6px}.gbtn{border:2px solid #e3d7c2;background:#fff;border-radius:12px;padding:8px 12px;font-size:16px;font-weight:700;color:var(--navy)}
+.gbtn.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.about{background:#fff;border-radius:14px;padding:6px 16px;color:var(--muted);line-height:1.45}
+.name{font-size:22px;padding:12px 16px;border-radius:14px;border:3px solid var(--gold);width:min(100%,420px);text-align:center;font-weight:700}
+.cert{width:min(100%,640px);background:#FFFBF0;border:6px double var(--gold);border-radius:12px;padding:20px;text-align:center}
+.cert .cg .pc{font-size:30px;color:var(--gold);margin:0 2px}.cert h2{font-size:clamp(28px,7vw,44px);color:var(--navy);margin:8px 0;letter-spacing:3px}
+.cert .cn{font-size:clamp(24px,6vw,34px);font-weight:800;color:var(--red);border-bottom:2px solid #999;display:inline-block;min-width:60%;margin:6px 0 10px}
+.cert .cs{color:var(--gold);font-weight:800;font-size:20px}
+
+/* Varaqalar */
+.wsnote{color:var(--muted);font-weight:600;margin:4px 0 10px}
+.lsn.ws .wsi{font-size:38px;line-height:1.2}.lsn.ws .les{color:var(--muted);font-size:12px}
+.board.ib{touch-action:none;user-select:none}
+.board.ib.m-arrows,.board.ib.m-paint{cursor:crosshair}
+.sq.blank{background:#fff;box-shadow:inset 0 0 0 .5px #9AA7B3}
+.sq.painted::after{content:"";position:absolute;inset:6%;border-radius:18%;background:rgba(47,111,208,.55);z-index:1}
+.sq.blank.painted::after{background:#3a3a3a;inset:0;border-radius:0}
+.sq .tk{position:absolute;font-style:normal;font-size:calc(var(--bs) / 8 * .62);z-index:4;animation:pop .2s}
+.numtok{display:inline-flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;border-radius:50%;background:var(--gold);color:#fff;font-size:.8em;font-family:Arial,sans-serif}
+.tools{display:flex;gap:10px;align-items:center}.brush{background:#2F6FD0;color:#fff;border-radius:12px;padding:8px 14px;font-weight:700}
+.btn.sm{padding:8px 14px;font-size:15px}
+.tokrow{gap:12px}
+.tok{touch-action:none;cursor:grab;background:#fff;border-radius:16px;min-width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;font-size:40px;box-shadow:0 4px 0 #e3d7c2;position:relative;animation:bob 1.6s ease-in-out infinite}
+.tok small{position:absolute;right:4px;bottom:2px;font-size:13px;font-weight:800;color:var(--navy)}
+.dragghost{position:fixed;z-index:80;pointer-events:none;transform:translate(-50%,-50%) scale(1.15);font-size:44px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.3))}
+.dragghost .board{--bs:120px}
+.hint2{margin:0;color:var(--muted);font-weight:600;text-align:center}
+.cardrow{display:flex;justify-content:center;min-height:140px}
+.cardrow .card{touch-action:none;cursor:grab;background:#fff;border-radius:16px;padding:8px;box-shadow:0 5px 0 #e3d7c2;animation:bob 1.6s ease-in-out infinite}
+.cardrow .card.gl .pc{font-size:84px}.cardrow .card.lift{opacity:.3}
+.board.mini{--bs:min(62vw,30vh,230px);border-width:4px;box-shadow:none}
+.boxes{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
+.sbox{flex:1 1 130px;max-width:220px;min-height:110px;border:3px dashed #c9b48f;border-radius:18px;background:#FFFDF6;display:flex;flex-direction:column;align-items:center;padding:8px;transition:transform .15s}
+.sbox b{font-size:18px;color:var(--navy)}.sbox .sin{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:6px}
+.sbox .done{font-size:22px;color:#2EA043}.sbox .done .pc{font-size:30px}
+.sbox.nope{border-color:#D63B30;animation:shake .3s}
+.opt.qtu{display:flex;flex-direction:column;align-items:center;min-width:96px}.opt.qtu b{font-size:30px}.opt.qtu small{font-size:14px}
+.opt.qtu.on{background:var(--gold);color:#fff;box-shadow:0 4px 0 #b07f12}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+/* Panda o'qituvchi */
+.panda{width:100%;height:auto;overflow:visible;display:block}
+.panda .pd-eyes{transform-origin:100px 76px;animation:pblink 4.5s infinite}
+.panda .pd-mouth{opacity:0;transform-origin:100px 111px}
+.panda.talk .pd-mouth{opacity:1;animation:ptalk .22s infinite alternate}
+.panda.talk .pd-smile{opacity:0}
+.panda .pd-arm{transform-origin:142px 145px}
+.panda.wave .pd-arm{animation:pwave .4s 4 alternate}
+.panda .pd-head{transform-origin:100px 130px;animation:pnod 6s ease-in-out infinite}
+.panda.jump{animation:pjump .6s ease-out}
+.panda.shake .pd-head{animation:pshake .5s}
+.panda .pd-pointer{opacity:0}.panda.talk .pd-pointer{opacity:1}
+@keyframes pblink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes ptalk{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
+@keyframes pwave{from{transform:rotate(0)}to{transform:rotate(-28deg)}}
+@keyframes pnod{0%,100%{transform:rotate(0)}50%{transform:rotate(2deg)}}
+@keyframes pjump{0%,100%{transform:translateY(0)}40%{transform:translateY(-22%)}70%{transform:translateY(0) scaleY(.94)}}
+@keyframes pshake{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}40%{transform:rotate(8deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(4deg)}}
+.hero .hp{width:76px;flex:none}
+.teacher{display:flex;align-items:center;gap:10px;width:100%}
+.teacher .pwrap{width:84px;flex:none}
+.teacher .bubble{position:relative;flex:1;margin:0}
+.teacher .bubble::before{content:"";position:absolute;left:-12px;top:50%;margin-top:-10px;border:10px solid transparent;border-right-color:#fff;border-left:0}
+.body.wt{display:flex;flex-direction:column;align-items:center;gap:10px}
+.content{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.content > .grid{align-self:stretch}
+.wsgrid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+
+/* Jonli shaxmat — keng ekranda chetlarda */
+.live{display:none}
+@media (min-width:1560px){
+  .live{display:block;position:fixed;top:110px;z-index:0;pointer-events:none;--pw:clamp(200px,calc((100vw - 1180px) / 2 - 60px),300px);--c:min(calc(var(--pw) / 4),calc((100vh - 454px) / 7));width:var(--pw)}
+  .live.left{left:calc((100vw - 1180px) / 4 - var(--pw) / 2)}
+  .live.right{right:calc((100vw - 1180px) / 4 - var(--pw) / 2)}
+  .live h4{margin:0 0 8px;text-align:center;color:var(--navy);font-size:18px;opacity:.8}
+}
+.lvb{position:relative;display:grid;margin:0 auto;width:calc(var(--c) * 4 + 12px);grid-template-columns:repeat(4,var(--c));grid-auto-rows:var(--c);border:6px solid #6b4a2b;border-radius:10px;box-shadow:0 6px 0 #4a321c;opacity:.95}
+.lvb i.l{background:var(--sqL)}.lvb i.d{background:var(--sqD)}
+.lp{position:absolute;width:var(--c);height:var(--c);display:flex;align-items:center;justify-content:center;font-weight:400}
+.lp .pc{font-size:calc(var(--c) * .78);filter:drop-shadow(0 3px 2px rgba(0,0,0,.25))}
+.lvcap{list-style:none;padding:0;margin:10px 0 0;color:var(--navy);font-weight:600;font-size:15px;line-height:1.7}
+.lv-knight{animation:lvKnight 9s ease-in-out infinite alternate}
+.lv-pawn-up{animation:lvPawnUp 6.4s ease-in-out infinite}
+.lv-pawn-down{animation:lvPawnDown 6.4s ease-in-out infinite}
+.lv-king{animation:lvKing 7s ease-in-out infinite alternate}
+.lv-bishop{animation:lvBishop 8s ease-in-out infinite alternate}
+.lv-rook{animation:lvRook 8s ease-in-out infinite alternate}
+.lv-queen{animation:lvQueen 10s ease-in-out infinite alternate}
+@keyframes lvKnight{0%,12%{transform:translate(0,0)}22%,34%{transform:translate(var(--c),calc(var(--c) * -2)) scale(1.08)}44%,56%{transform:translate(calc(var(--c) * 2),0)}66%,78%{transform:translate(calc(var(--c) * 3),calc(var(--c) * -2)) scale(1.08)}88%,100%{transform:translate(var(--c),calc(var(--c) * -3))}}
+@keyframes lvPawnUp{0%{transform:translate(0,0);opacity:0}8%,20%{transform:translate(0,0);opacity:1}30%,45%{transform:translate(0,calc(var(--c) * -1))}55%,70%{transform:translate(0,calc(var(--c) * -2))}80%,92%{transform:translate(0,calc(var(--c) * -3));opacity:1}100%{transform:translate(0,calc(var(--c) * -3));opacity:0}}
+@keyframes lvPawnDown{0%{transform:translate(0,0);opacity:0}8%,20%{transform:translate(0,0);opacity:1}30%,45%{transform:translate(0,var(--c))}55%,70%{transform:translate(0,calc(var(--c) * 2))}80%,92%{transform:translate(0,calc(var(--c) * 3));opacity:1}100%{transform:translate(0,calc(var(--c) * 3));opacity:0}}
+@keyframes lvKing{0%,25%{transform:translate(0,0)}40%,60%{transform:translate(calc(var(--c) * -1),var(--c))}75%,100%{transform:translate(calc(var(--c) * -1),calc(var(--c) * 2))}}
+@keyframes lvBishop{0%,15%{transform:translate(0,0)}45%,60%{transform:translate(calc(var(--c) * 2),calc(var(--c) * 2))}85%,100%{transform:translate(calc(var(--c) * 3),var(--c))}}
+@keyframes lvRook{0%,15%{transform:translate(0,0)}45%,60%{transform:translate(0,calc(var(--c) * -3))}85%,100%{transform:translate(calc(var(--c) * -1),calc(var(--c) * -3))}}
+@keyframes lvQueen{0%,20%{transform:translate(0,0)}45%,55%{transform:translate(0,calc(var(--c) * -3))}80%,100%{transform:translate(calc(var(--c) * 2),calc(var(--c) * -1))}}
+/* Kung-fu panda — chetdagi panellar tagida (9 s davomli mashq) */
+.kf{width:min(100%,230px);margin:4px auto 0}
+.kfp{width:100%;height:auto;overflow:visible;display:block}
+.live.right .kfp{transform:scaleX(-1)}
+@media (max-height:700px){.kf{display:none}.live{--c:min(calc(var(--pw) / 4),calc((100vh - 250px) / 7))}}
+.kfp .k-all{transform-origin:100px 230px;animation:kfAll 9s ease-in-out infinite}
+.kfp .k-flip{transform-origin:100px 140px;animation:kfFlip 9s ease-in-out infinite}
+.kfp .k-shift{animation:kfShift 9s ease-in-out infinite}
+.kfp .k-shadow{transform-origin:100px 234px;animation:kfShadow 9s ease-in-out infinite}
+.kfp .k-armR{transform-origin:134px 134px;animation:kfArmR 9s ease-in-out infinite}
+.kfp .k-armL{transform-origin:66px 134px;animation:kfArmL 9s ease-in-out infinite}
+.kfp .k-legR{transform-origin:118px 188px;animation:kfLegR 9s ease-in-out infinite}
+.kfp .k-legL{transform-origin:82px 188px;animation:kfLegL 9s ease-in-out infinite}
+.kfp .k-head{transform-origin:100px 118px;animation:kfHead 9s ease-in-out infinite}
+.kfp .k-tails{transform-origin:56px 56px;animation:kfTails .6s ease-in-out infinite alternate}
+.kfp .k-eyes{transform-origin:100px 71px;animation:pblink 4.5s infinite}
+@keyframes kfAll{
+  0%,8%{transform:translate(0,0) rotate(0deg)} 4%{transform:translate(0,3px) rotate(0deg)}
+  30%{transform:translate(0,0) rotate(0deg)} 35%,40%{transform:translate(0,0) rotate(-9deg)} 44%{transform:translate(0,0) rotate(0deg)}
+  47%{transform:translate(0,5px) rotate(0deg)} 52.5%{transform:translate(0,-72px) rotate(0deg)} 58%,76%{transform:translate(0,0) rotate(0deg)}
+  80%,87%{transform:translate(0,-6px) rotate(0deg)} 90%{transform:translate(0,0) rotate(0deg)}
+  93%,97%{transform:translate(0,0) rotate(9deg)} 100%{transform:translate(0,0) rotate(0deg)}}
+@keyframes kfFlip{0%,47.5%{transform:rotate(0deg)} 57.4%{transform:rotate(360deg)} 57.5%,100%{transform:rotate(0deg)}}
+@keyframes kfShift{0%,60%{transform:translateX(0)} 64%,67%{transform:translateX(40px)} 71%,73%{transform:translateX(-30px)} 76%,100%{transform:translateX(0)}}
+@keyframes kfShadow{0%,46%{transform:scale(1);opacity:1} 52%{transform:scale(.55);opacity:.5} 58%,100%{transform:scale(1);opacity:1}}
+@keyframes kfArmR{0%,8%{transform:rotate(0deg)} 11%,14%{transform:rotate(-75deg)} 17%{transform:rotate(0deg)}
+  33%,41%{transform:rotate(-30deg)} 45%{transform:rotate(0deg)} 49%,55%{transform:rotate(-150deg)} 59%{transform:rotate(0deg)}
+  78%,87%{transform:rotate(-150deg)} 90%,100%{transform:rotate(0deg)}}
+@keyframes kfArmL{0%,17%{transform:rotate(0deg)} 20%,23%{transform:rotate(-115deg)} 26%{transform:rotate(0deg)}
+  33%,41%{transform:rotate(60deg)} 45%{transform:rotate(0deg)} 49%,55%{transform:rotate(150deg)} 59%{transform:rotate(0deg)}
+  78%,87%{transform:rotate(150deg)} 90%,100%{transform:rotate(0deg)}}
+@keyframes kfLegR{0%,30%{transform:rotate(0deg)} 35%,40%{transform:rotate(-95deg)} 44%{transform:rotate(0deg)}
+  49%,55%{transform:rotate(-40deg)} 58%{transform:rotate(0deg)} 62%{transform:rotate(-18deg)} 65%{transform:rotate(0deg)} 69%{transform:rotate(-18deg)} 72%,76%{transform:rotate(0deg)}
+  80%,87%{transform:rotate(-55deg)} 90%,100%{transform:rotate(0deg)}}
+@keyframes kfLegL{0%,47%{transform:rotate(0deg)} 49%,55%{transform:rotate(40deg)} 58%,63%{transform:rotate(0deg)} 66%{transform:rotate(18deg)} 68%,70%{transform:rotate(0deg)} 73%{transform:rotate(18deg)} 76%,100%{transform:rotate(0deg)}}
+@keyframes kfHead{0%,90%{transform:rotate(0deg)} 93%,97%{transform:rotate(14deg)} 100%{transform:rotate(0deg)}}
+@keyframes kfTails{from{transform:rotate(-6deg)}to{transform:rotate(8deg)}}
+@media (prefers-reduced-motion:reduce){.lp,.kfp *{animation:none!important}}
+.introp{display:flex;align-items:flex-end;justify-content:center;gap:6px}
+.introp .pwrap{width:130px}.introp .pc{font-size:90px}
+@media (min-width:1000px){
+  #app{max-width:1180px}
+  .body.wt{display:grid;grid-template-columns:240px 1fr;align-items:start;gap:22px}
+  .teacher{flex-direction:column;position:sticky;top:12px}
+  .teacher .pwrap{width:190px;order:2}
+  .teacher .bubble{order:1}
+  .teacher .bubble::before{left:50%;top:auto;bottom:-12px;margin:0 0 0 -10px;border:10px solid transparent;border-top-color:#fff;border-bottom:0}
+}
+@keyframes pop{from{transform:scale(.6)}to{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes blink{50%{opacity:.2}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;left:0;top:0;width:100%}}
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>Bu dastur ishlashi uchun brauzerda JavaScript yoqilgan bo'lishi kerak.</noscript>
+<script>window.SHQ_AUDIO = {"m": "audio_m.12d65ae7.js", "f": "audio_f.c6667212.js"};</script>
+<script>
+/* Shaxmat dvigateli: qoidalar, yurishlar, mot/pat, oddiy sun'iy raqib.
+   Katak raqami: a1 = 0, h1 = 7, a8 = 56. 'S' — tosh (o'tib bo'lmaydigan to'siq). */
+const Chess = (() => {
+  const VAL = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
+  const KN = [[1, 2], [2, 1], [-1, 2], [-2, 1], [1, -2], [2, -1], [-1, -2], [-2, -1]];
+  const KD = [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]];
+  const RD = KD.slice(0, 4), BD = KD.slice(4);
+
+  const sqName = s => "abcdefgh"[s & 7] + ((s >> 3) + 1);
+  const sqIdx = n => (n.charCodeAt(0) - 97) + (Number(n[1]) - 1) * 8;
+  const colorOf = p => (!p || p === "S") ? null : (p === p.toUpperCase() ? "w" : "b");
+  const other = c => (c === "w" ? "b" : "w");
+  const on = (f, r) => f >= 0 && f < 8 && r >= 0 && r < 8;
+
+  function parse(fen) {
+    const [pl, turn = "w", cs = "-", ep = "-"] = fen.trim().split(/\s+/);
+    const b = Array(64).fill("");
+    let r = 7, f = 0;
+    for (const ch of pl) {
+      if (ch === "/") { r--; f = 0; }
+      else if (/\d/.test(ch)) f += Number(ch);
+      else { b[r * 8 + f] = ch; f++; }
+    }
+    return { b, turn, castle: cs === "-" ? "" : cs, ep: ep === "-" ? -1 : sqIdx(ep) };
+  }
+
+  /* Ranglarni almashtirib, taxtani aylantiradi (qora yuradigan masalani oq yuradiganga aylantirish uchun). */
+  function mirror(st) {
+    const b = Array(64).fill("");
+    for (let s = 0; s < 64; s++) {
+      const p = st.b[s]; if (!p) continue;
+      const t = (7 - (s >> 3)) * 8 + (s & 7);
+      b[t] = p === "S" ? "S" : (p === p.toUpperCase() ? p.toLowerCase() : p.toUpperCase());
+    }
+    const castle = st.castle.split("").map(c => c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()).join("");
+    return { b, turn: other(st.turn), castle, ep: st.ep < 0 ? -1 : (7 - (st.ep >> 3)) * 8 + (st.ep & 7) };
+  }
+
+  const kingSq = (st, side) => st.b.indexOf(side === "w" ? "K" : "k");
+
+  function attacked(st, sq, by) {
+    const b = st.b, f = sq & 7, r = sq >> 3;
+    const up = by === "w";
+    const P = up ? "P" : "p", N = up ? "N" : "n", K = up ? "K" : "k", B = up ? "B" : "b", R = up ? "R" : "r", Q = up ? "Q" : "q";
+    const pr = up ? r - 1 : r + 1;
+    for (const df of [-1, 1]) if (on(f + df, pr) && b[pr * 8 + f + df] === P) return true;
+    for (const [df, dr] of KN) if (on(f + df, r + dr) && b[(r + dr) * 8 + f + df] === N) return true;
+    for (const [df, dr] of KD) if (on(f + df, r + dr) && b[(r + dr) * 8 + f + df] === K) return true;
+    for (const [dirs, A] of [[RD, R], [BD, B]]) {
+      for (const [df, dr] of dirs) {
+        let x = f + df, y = r + dr;
+        while (on(x, y)) {
+          const q = b[y * 8 + x];
+          if (q) { if (q === A || q === Q) return true; break; }
+          x += df; y += dr;
+        }
+      }
+    }
+    return false;
+  }
+
+  function inCheck(st, side) {
+    const k = kingSq(st, side);
+    return k >= 0 && attacked(st, k, other(side));
+  }
+
+  function pseudo(st, side) {
+    const b = st.b, mv = [];
+    const canLand = to => { const q = b[to]; return !q || (q !== "S" && colorOf(q) !== side && q.toLowerCase() !== "k"); };
+    for (let s = 0; s < 64; s++) {
+      const p = b[s]; if (colorOf(p) !== side) continue;
+      const t = p.toLowerCase(), f = s & 7, r = s >> 3;
+      if (t === "p") {
+        const dir = side === "w" ? 1 : -1, start = side === "w" ? 1 : 6, last = side === "w" ? 7 : 0;
+        const push = (to, extra) => {
+          if ((to >> 3) === last) for (const pr of ["q", "r", "b", "n"]) mv.push({ from: s, to, promo: pr, ...extra });
+          else mv.push({ from: s, to, ...extra });
+        };
+        const r1 = r + dir;
+        if (on(f, r1) && !b[r1 * 8 + f]) {
+          push(r1 * 8 + f);
+          if (r === start && !b[(r + 2 * dir) * 8 + f]) mv.push({ from: s, to: (r + 2 * dir) * 8 + f, double: true });
+        }
+        for (const df of [-1, 1]) {
+          if (!on(f + df, r1)) continue;
+          const to = r1 * 8 + f + df, q = b[to];
+          if (q && q !== "S" && colorOf(q) !== side && q.toLowerCase() !== "k") push(to);
+          else if (to === st.ep && !q) mv.push({ from: s, to, ep: true });
+        }
+      } else if (t === "n" || t === "k") {
+        for (const [df, dr] of (t === "n" ? KN : KD)) {
+          if (!on(f + df, r + dr)) continue;
+          const to = (r + dr) * 8 + f + df;
+          if (canLand(to)) mv.push({ from: s, to });
+        }
+      } else {
+        const dirs = t === "r" ? RD : t === "b" ? BD : KD;
+        for (const [df, dr] of dirs) {
+          let x = f + df, y = r + dr;
+          while (on(x, y)) {
+            const to = y * 8 + x, q = b[to];
+            if (!q) mv.push({ from: s, to });
+            else { if (canLand(to)) mv.push({ from: s, to }); break; }
+            x += df; y += dr;
+          }
+        }
+      }
+    }
+    // Rokirovka
+    const opp = other(side);
+    if (side === "w" && b[4] === "K" && !attacked(st, 4, opp)) {
+      if (st.castle.includes("K") && b[7] === "R" && !b[5] && !b[6] && !attacked(st, 5, opp) && !attacked(st, 6, opp))
+        mv.push({ from: 4, to: 6, castle: "K" });
+      if (st.castle.includes("Q") && b[0] === "R" && !b[1] && !b[2] && !b[3] && !attacked(st, 3, opp) && !attacked(st, 2, opp))
+        mv.push({ from: 4, to: 2, castle: "Q" });
+    }
+    if (side === "b" && b[60] === "k" && !attacked(st, 60, opp)) {
+      if (st.castle.includes("k") && b[63] === "r" && !b[61] && !b[62] && !attacked(st, 61, opp) && !attacked(st, 62, opp))
+        mv.push({ from: 60, to: 62, castle: "k" });
+      if (st.castle.includes("q") && b[56] === "r" && !b[57] && !b[58] && !b[59] && !attacked(st, 59, opp) && !attacked(st, 58, opp))
+        mv.push({ from: 60, to: 58, castle: "q" });
+    }
+    return mv;
+  }
+
+  function make(st, m) {
+    const b = st.b.slice(), p = b[m.from], side = colorOf(p);
+    const captured = m.ep ? b[m.to + (side === "w" ? -8 : 8)] : b[m.to];
+    b[m.to] = m.promo ? (side === "w" ? m.promo.toUpperCase() : m.promo) : p;
+    b[m.from] = "";
+    if (m.ep) b[m.to + (side === "w" ? -8 : 8)] = "";
+    if (m.castle === "K") { b[5] = "R"; b[7] = ""; }
+    if (m.castle === "Q") { b[3] = "R"; b[0] = ""; }
+    if (m.castle === "k") { b[61] = "r"; b[63] = ""; }
+    if (m.castle === "q") { b[59] = "r"; b[56] = ""; }
+    let c = st.castle;
+    if (p === "K") c = c.replace(/[KQ]/g, "");
+    if (p === "k") c = c.replace(/[kq]/g, "");
+    const rm = { 0: "Q", 7: "K", 56: "q", 63: "k" };
+    if (rm[m.from] !== undefined) c = c.replace(rm[m.from], "");
+    if (rm[m.to] !== undefined) c = c.replace(rm[m.to], "");
+    return { b, turn: other(st.turn), castle: c, ep: m.double ? (m.from + m.to) / 2 : -1, captured: captured || "" };
+  }
+
+  function legal(st, side = st.turn) {
+    const s2 = side === st.turn ? st : { ...st, turn: side };
+    const ps = pseudo(s2, side);
+    if (kingSq(s2, side) < 0) return ps;
+    return ps.filter(m => !inCheck(make(s2, m), side));
+  }
+
+  function status(st) {
+    const moves = legal(st), chk = inCheck(st, st.turn);
+    if (!moves.length) return kingSq(st, st.turn) < 0 ? "nomoves" : (chk ? "mate" : "stalemate");
+    return chk ? "check" : "normal";
+  }
+
+  function perft(st, d) {
+    if (d === 0) return 1;
+    let n = 0;
+    for (const m of legal(st)) n += d === 1 ? 1 : perft(make(st, m), d - 1);
+    return n;
+  }
+
+  const material = (st, side) => st.b.reduce((a, p) => a + (colorOf(p) === side ? VAL[p.toLowerCase()] : 0), 0);
+  const pieceCount = (st, side) => st.b.filter(p => colorOf(p) === side && p.toLowerCase() !== "k").length;
+
+  /* ---------------- Sun'iy raqib ---------------- */
+  function scoreMove(st, m, level) {
+    const side = st.turn, opp = other(side);
+    const after = make(st, m), mover = st.b[m.from].toLowerCase();
+    let sc = VAL[(after.captured || " ").toLowerCase()] * 10 || 0;
+    if (m.promo) sc += m.promo === "q" ? 60 : -20;
+    const hanging = attacked(after, m.to, opp) && !attacked(after, m.to, side);
+    if (hanging) sc -= VAL[m.promo || mover] * 9;
+    else if (attacked(after, m.to, opp)) sc -= Math.max(0, VAL[m.promo || mover] - 1) * 3;
+    if (mover === "p") sc += side === "w" ? (m.to >> 3) : 7 - (m.to >> 3);
+    const cf = Math.abs(3.5 - (m.to & 7)) + Math.abs(3.5 - (m.to >> 3));
+    sc += (7 - cf) * 0.4;
+    if (inCheck(after, opp)) sc += 1.5;
+    const st2 = status(after);
+    if (st2 === "mate") sc += 1000;
+    if (st2 === "stalemate") sc -= level === "endgame" ? 0 : 30;
+    return sc;
+  }
+
+  function bestMove(st, level = "easy") {
+    const moves = legal(st).filter(m => !m.promo || m.promo === "q");
+    if (!moves.length) return null;
+    const noise = level === "easy" ? 7 : level === "mini" ? 3 : level === "endgame" ? 2 : 1;
+    let mates = level === "easy" && Math.random() > 0.75 ? [] : moves.filter(m => status(make(st, m)) === "mate");
+    if (mates.length) return mates[0];
+    let best = null, bs = -1e9;
+    for (const m of moves) {
+      let sc = scoreMove(st, m, level);
+      if (level === "medium") {
+        // 2 yurish oldinga: raqibning eng yaxshi javobini ayirib tashlaydi
+        const after = make(st, m);
+        const replies = legal(after).filter(x => !x.promo || x.promo === "q");
+        let worst = 0;
+        for (const r of replies) {
+          const a2 = make(after, r);
+          let v = VAL[(a2.captured || " ").toLowerCase()] * 10 || 0;
+          if (status(a2) === "mate") v = 2000;
+          if (v > worst) worst = v;
+        }
+        sc -= worst;
+      }
+      if (level === "easy" && Math.random() < 0.35) sc += VAL[st.b[m.from].toLowerCase()] * 4; // ba'zan ehtiyotsiz
+      sc += Math.random() * noise;
+      if (sc > bs) { bs = sc; best = m; }
+    }
+    return best;
+  }
+
+  return { parse, mirror, legal, make, status, inCheck, attacked, perft, bestMove, sqName, sqIdx, colorOf, other,
+           material, pieceCount, kingSq, VAL, pseudo };
+})();
+if (false) module.exports = Chess;
+
+/* 24 ta dars: kirish matni (ota-ona o'qib beradi) va topshiriqlar. Pozitsiyalar python-chess bilan tekshirilgan. */
+const MODULES = [
+  { n: 1, name: "Shaxmat olami", color: "#3A7CA5", from: 1, to: 3 },
+  { n: 2, name: "Donalar", color: "#2E7D6B", from: 4, to: 12 },
+  { n: 3, name: "Asosiy qoidalar", color: "#B5523B", from: 13, to: 17 },
+  { n: 4, name: "Mot ustasi", color: "#7B4B94", from: 18, to: 21 },
+  { n: 5, name: "Haqiqiy o'yinchi", color: "#C2851B", from: 22, to: 24 },
+];
+const RANKS = [
+  { at: 3, name: "Piyoda", g: "p" }, { at: 8, name: "Ot", g: "n" }, { at: 12, name: "Fil", g: "b" },
+  { at: 17, name: "Ruh", g: "r" }, { at: 21, name: "Farzin", g: "q" }, { at: 24, name: "Shoh", g: "k" },
+];
+
+const DARK_R12 = ["a1", "c1", "e1", "g1", "b2", "d2", "f2", "h2"];
+const MINI = { promoteWins: true, captureAllWins: true, noMovesLoses: true };
+
+const LESSONS = [
+ { n: 1, g: "k", t: "Shaxmat qirolligiga sayohat",
+   intro: ["Uzoq-uzoqda 64 xonali sehrli qirollik bor.", "Unda Oq va Qora jamoalar yashaydi.", "Esla: o'ng pastki burchakda doim OQ katak bo'ladi!"],
+   tasks: [
+     { type: "tap", prompt: "Pastki ikki qatordagi hamma QORA kataklarni bos", fen: "8/8/8/8/8/8/8/8", targets: DARK_R12, coords: false },
+     { type: "tap", prompt: "O'ng pastki burchakdagi OQ katakni bos", fen: "8/8/8/8/8/8/8/8", targets: ["h1"], coords: false },
+     { type: "choice", prompt: "Shaxmat taxtasida nechta katak bor?", items: [{ q: "Nechta katak?", opts: ["32", "64", "100"], ans: 1 }] },
+   ] },
+ { n: 2, g: "r", t: "Shaxmat yo'llari",
+   intro: ["Qirollikda uch xil yo'l bor:", "yotgan yo'l (gorizontal), tik yo'l (vertikal) va qiyshiq yo'l (diagonal)."],
+   tasks: [
+     { type: "tap", prompt: "Yotgan yo'l: 3-qatordagi hamma kataklarni bos", fen: "8/8/8/8/8/8/8/8", targets: ["a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3"] },
+     { type: "tap", prompt: "Tik yo'l: «e» ustunidagi hamma kataklarni bos", fen: "8/8/8/8/8/8/8/8", targets: ["e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8"] },
+     { type: "tap", prompt: "Qiyshiq yo'l: a1 dan h8 gacha hamma kataklarni bos", fen: "8/8/8/8/8/8/8/8", targets: ["a1", "b2", "c3", "d4", "e5", "f6", "g7", "h8"] },
+   ] },
+ { n: 3, g: "q", t: "Kataklar manzili",
+   intro: ["Har bir katakning manzili bor: avval harf (pastda), keyin raqam (yonda).", "Masalan: e4."],
+   tasks: [{ type: "coord", prompt: "Shu katakni top va bos", rounds: 8 }] },
+ { n: 4, g: "r", t: "Ruh — qal'a qo'riqchisi",
+   intro: ["Ruh faqat TO'G'RI yuradi: oldinga, orqaga, o'ngga, chapga.", "Boshqa donalar ustidan sakramaydi."],
+   tasks: [
+     { type: "tap", prompt: "Ruh bora oladigan hamma kataklarni bos", fen: "8/8/8/8/3R4/8/8/8", reachOf: "d4" },
+     { type: "path", prompt: "Ruh bilan hamma olmalarni yig'", fen: "8/8/8/8/8/8/8/R7", apples: ["a6", "f6", "f2"] },
+     { type: "path", prompt: "Ruhni yulduzgacha olib bor. Toshlardan o'tib bo'lmaydi!", fen: "8/8/8/8/8/8/8/R7", stones: ["a5", "e1", "d4"], goal: "h8" },
+     { type: "game", prompt: "Ovchi va quyonlar: ruh bilan hamma piyodalarni yeb qo'y! Piyoda pastga yetsa — ular yutadi.", fen: "8/1p1p1p2/8/8/8/8/8/R7 w - -", ai: "mini", rules: MINI },
+   ] },
+ { n: 5, g: "b", t: "Fil — oq va qora aka-ukalar",
+   intro: ["Fil QIYSHIQ yuradi.", "Qora katakdagi fil hech qachon oq katakka o'tolmaydi!"],
+   tasks: [
+     { type: "tap", prompt: "Fil bora oladigan hamma kataklarni bos", fen: "8/8/8/8/8/8/8/2B5", reachOf: "c1" },
+     { type: "path", prompt: "Fil bilan hamma olmalarni yig'", fen: "8/8/8/8/8/8/8/2B5", apples: ["e3", "g5", "a5", "d8"] },
+     { type: "game", prompt: "Ovchi va quyonlar: fil bilan piyodalarni yeb qo'y!", fen: "8/2p1p3/8/8/8/8/8/2B5 w - -", ai: "mini", rules: MINI },
+   ] },
+ { n: 6, g: "q", t: "Farzin — eng kuchli jangchi",
+   intro: ["Farzin = Ruh + Fil.", "U 8 ta yo'nalishda yuradi — xuddi quyosh nurlari kabi."],
+   tasks: [
+     { type: "tap", prompt: "Farzin BIR yurishda yeya oladigan olmalarni bos", fen: "8/8/8/4Q3/8/8/8/8", marks: { b2: "apple", e1: "apple", h8: "apple", c7: "apple", a5: "apple", g4: "apple", b3: "apple", f7: "apple" }, targets: ["b2", "e1", "h8", "c7", "a5"] },
+     { type: "path", prompt: "Farzin bilan hamma olmalarni yig'", fen: "8/8/8/8/8/8/8/3Q4", apples: ["d7", "h3", "a4", "g7"] },
+     { type: "game", prompt: "Farzin 8 ta piyodaga qarshi! Hammasini yeb qo'y.", fen: "8/pppppppp/8/8/8/8/8/3Q4 w - -", ai: "mini", rules: MINI },
+   ] },
+ { n: 7, g: "k", t: "Shoh — qirollik boshlig'i",
+   intro: ["Shoh eng muhim dona. U faqat BIR qadam yuradi.", "Ikki shoh hech qachon yonma-yon turmaydi."],
+   tasks: [
+     { type: "tap", prompt: "Shoh bora oladigan hamma kataklarni bos", fen: "8/8/8/8/4K3/8/8/8", reachOf: "e4" },
+     { type: "choice", prompt: "Bu ikki shoh shunday tura oladimi?", items: [
+         { fen: "8/8/4k3/8/4K3/8/8/8", opts: ["Ha", "Yo'q"], ans: 0 }, { fen: "8/8/8/4k3/3K4/8/8/8", opts: ["Ha", "Yo'q"], ans: 1 },
+         { fen: "8/8/8/8/8/8/8/K1k5", opts: ["Ha", "Yo'q"], ans: 0 }, { fen: "7k/6K1/8/8/8/8/8/8", opts: ["Ha", "Yo'q"], ans: 1 }] },
+     { type: "path", prompt: "Shoh bilan olmalarni yig'", fen: "8/8/8/8/8/8/8/4K3", apples: ["e3", "g3", "g5"] },
+     { type: "game", prompt: "Shoh jangi: piyodangni oxirgi qatorga olib bor!", fen: "4k3/2ppp3/8/8/8/8/2PPP3/4K3 w - -", ai: "mini", rules: { promoteWins: true, captureAllWins: true } },
+   ] },
+ { n: 8, g: "n", t: "Ot — sehrli sakrovchi",
+   intro: ["Ot «G» harfi bilan yuradi: ikki katak to'g'ri, bir katak yonga.", "Ot boshqa donalar ustidan SAKRAB o'tadi!"],
+   tasks: [
+     { type: "tap", prompt: "Ot sakray oladigan hamma kataklarni bos", fen: "8/8/8/8/3N4/8/8/8", reachOf: "d4" },
+     { type: "tap", prompt: "Burchakdagi ot qayerga sakray oladi?", fen: "8/8/8/8/8/8/8/N7", reachOf: "a1" },
+     { type: "path", prompt: "Ot bilan hamma olmalarni yig'", fen: "8/8/8/8/8/8/8/1N6", apples: ["c3", "e4", "d6"] },
+   ] },
+ { n: 9, g: "n", t: "Ot va sehrli o'rmon",
+   intro: ["Ot burchakda kuchsiz, markazda kuchli.", "Bugun ot olma teradi va bombalardan qochadi!"],
+   tasks: [
+     { type: "path", prompt: "Otni yulduzgacha olib bor. Bombaga tushma (ustidan sakrasa bo'ladi)!", fen: "8/8/8/8/8/8/8/1N6", bombs: ["c3", "d4", "e5", "f4", "h4", "e7"], goal: "g6" },
+     { type: "path", prompt: "Ot bilan 5 ta olmani yig'", fen: "8/8/8/8/8/8/8/1N6", apples: ["c3", "e4", "d6", "f5", "g7"] },
+     { type: "game", prompt: "Ot 3 ta piyodaga qarshi! Ularni yeb qo'y.", fen: "8/2ppp3/8/8/8/8/8/1N6 w - -", ai: "mini", rules: MINI },
+   ] },
+ { n: 10, g: "p", t: "Piyoda — jasur askar",
+   intro: ["Piyoda faqat oldinga yuradi. Birinchi yurishda 2 katak yursa bo'ladi.", "TO'G'RI yuradi, lekin QIYSHIQ uradi!"],
+   tasks: [
+     { type: "tap", prompt: "Piyoda bora oladigan kataklarni bos", fen: "8/8/8/8/8/8/4P3/8", reachOf: "e2" },
+     { type: "tap", prompt: "Piyoda qaysi qora donalarni yeya oladi? Ularni bos", fen: "8/8/8/2nbr3/3Pp3/8/8/8", reachOf: "d4" },
+     { type: "game", prompt: "Piyodalar urushi: oxirgi qatorga birinchi yet!", fen: "8/2ppp3/8/8/8/8/2PPP3/8 w - -", ai: "mini", rules: MINI },
+   ] },
+ { n: 11, g: "p", t: "Piyoda farzinga aylanadi",
+   intro: ["Piyoda oxirgi qatorga yetsa — sehrlanib boshqa donaga aylanadi!", "Ko'pincha eng kuchli FARZINNI tanlaymiz. Lekin piyoda hech qachon shohga aylanmaydi."],
+   tasks: [
+     { type: "puzzle", prompt: "Piyodani oxirgi qatorga olib bor", items: [{ fen: "8/4P3/8/8/8/8/8/8 w - -", goal: "promote" }, { fen: "3rn3/2P5/8/8/8/8/8/8 w - -", goal: "promote" }] },
+     { type: "game", prompt: "Katta Piyodalar urushi: 8 ga qarshi 8!", fen: "8/pppppppp/8/8/8/8/PPPPPPPP/8 w - -", ai: "mini", rules: MINI },
+   ] },
+ { n: 12, g: "q", t: "Katta parad",
+   intro: ["Barcha donalar o'z joyiga turadi.", "Chetlarda ruhlar, keyin otlar, fillar. Farzin o'z rangidagi katakda!", "Narxlar: piyoda 1, ot 3, fil 3, ruh 5, farzin 9."],
+   tasks: [
+     { type: "setup", prompt: "Pastdagi donani tanla va uni o'z joyiga qo'y" },
+     { type: "choice", prompt: "Qaysi biri qimmatroq? (Narxi teng bo'lsa — «Teng»)", items: [
+         { opts: ["g:P", "Teng", "g:N"], ans: 2 }, { opts: ["g:R", "Teng", "g:B"], ans: 0 }, { opts: ["g:Q", "Teng", "g:R"], ans: 0 },
+         { opts: ["g:N", "Teng", "g:B"], ans: 1 }, { opts: ["g:P", "Teng", "g:Q"], ans: 2 }] },
+   ] },
+ { n: 13, g: "r", t: "Hujum va himoya",
+   intro: ["Himoyasiz dona — yolg'iz dona. Uni osongina yeb qo'yishadi.", "Yurishdan oldin so'ra: «Raqib meni nima bilan ura oladi?»"],
+   tasks: [
+     { type: "tap", prompt: "Himoyasiz qora donalarni bos (ularni hech kim himoya qilmaydi)", fen: "r7/1p6/2n5/8/8/8/8/8", targets: ["a8", "b7"] },
+     { type: "tap", prompt: "Himoyasiz qora donalarni bos", fen: "3q4/4p3/5b2/7n/8/8/8/8", targets: ["d8", "h5"] },
+     { type: "tap", prompt: "Himoyasiz qora donani bos", fen: "8/8/3p4/2b5/6n1/8/8/8", targets: ["g4"] },
+   ] },
+ { n: 14, g: "k", t: "Shah! Shohni qutqar",
+   intro: ["Shohga hujum — bu SHAH!", "Qutqarishning 3 yo'li: Q — qochish, T — to'sish, U — urish."],
+   tasks: [
+     { type: "choice", prompt: "Qora shohga shah berilganmi?", items: [
+         { fen: "4k3/8/8/8/8/8/8/4R1K1 b - -", opts: ["Ha", "Yo'q"], ans: 0 }, { fen: "4k3/8/8/8/8/8/8/R5K1 b - -", opts: ["Ha", "Yo'q"], ans: 1 },
+         { fen: "4k3/8/3N4/8/8/8/8/6K1 b - -", opts: ["Ha", "Yo'q"], ans: 0 }, { fen: "4k3/8/8/2N5/8/8/8/6K1 b - -", opts: ["Ha", "Yo'q"], ans: 1 }] },
+     { type: "puzzle", prompt: "Oq shohga shah! Uni qutqar", items: [
+         { fen: "4k3/8/8/8/8/8/8/4R1K1 b - -", mirror: true, goal: "escape" }, { fen: "4k3/3r4/8/8/8/8/8/4R1K1 b - -", mirror: true, goal: "escape" },
+         { fen: "4k3/8/8/8/8/8/8/r3R1K1 b - -", mirror: true, goal: "escape" }, { fen: "3rkr2/3p1p2/8/2b5/8/8/8/4R2K b - -", mirror: true, goal: "escape" }] },
+   ] },
+ { n: 15, g: "q", t: "Mot — o'yinning maqsadi",
+   intro: ["Shohga shah berilsa-yu, u na qocha olsa, na to'sa olsa, na ura olsa — bu MOT!", "Mot qo'ygan o'yinchi yutadi."],
+   tasks: [
+     { type: "choice", prompt: "Qora shohga mot qo'yilganmi?", items: [
+         { fen: "4R1k1/5ppp/8/8/8/8/5PPP/6K1 b - -", opts: ["Mot", "Mot emas"], ans: 0 }, { fen: "4k3/8/8/8/8/8/8/4R1K1 b - -", opts: ["Mot", "Mot emas"], ans: 1 },
+         { fen: "7k/5Q2/6K1/8/8/8/8/8 b - -", opts: ["Mot", "Mot emas"], ans: 1 }, { fen: "R5k1/1R6/8/8/8/8/8/6K1 b - -", opts: ["Mot", "Mot emas"], ans: 0 }] },
+     { type: "puzzle", prompt: "Bir yurishda MOT qo'y!", items: [{ fen: "6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - -", goal: "mate" }, { fen: "k7/8/1K6/8/8/8/8/7R w - -", goal: "mate" }] },
+   ] },
+ { n: 16, g: "k", t: "Pat va durang",
+   intro: ["Shohga shah YO'Q, lekin yuradigan joyi ham yo'q — bu PAT.", "Pat — durang: hech kim yutmaydi. Ehtiyot bo'l!"],
+   tasks: [
+     { type: "choice", prompt: "Bu nima: shah, mot yoki pat?", items: [
+         { fen: "4R1k1/5ppp/8/8/8/8/5PPP/6K1 b - -", opts: ["Shah", "Mot", "Pat"], ans: 1 }, { fen: "7k/5Q2/6K1/8/8/8/8/8 b - -", opts: ["Shah", "Mot", "Pat"], ans: 2 },
+         { fen: "4k3/8/8/8/8/8/8/4R1K1 b - -", opts: ["Shah", "Mot", "Pat"], ans: 0 }, { fen: "7k/6Q1/5K2/8/8/8/8/8 b - -", opts: ["Shah", "Mot", "Pat"], ans: 1 },
+         { fen: "k7/2Q5/1K6/8/8/8/8/8 b - -", opts: ["Shah", "Mot", "Pat"], ans: 2 }, { fen: "7k/8/8/8/8/8/8/B5K1 b - -", opts: ["Shah", "Mot", "Pat"], ans: 0 }] },
+     { type: "puzzle", prompt: "Mot qo'y, lekin PAT qilib qo'yma!", items: [{ fen: "7k/8/6K1/3Q4/8/8/8/8 w - -", goal: "mate" }] },
+   ] },
+ { n: 17, g: "r", t: "Rokirovka — shohning xavfsiz uyi",
+   intro: ["Rokirovkada shoh ruh tomonga 2 katak yuradi, ruh esa shohning ustidan o'tib, uning yoniga turadi.", "Buning uchun shohni ruh tomonga 2 katak sur."],
+   tasks: [
+     { type: "puzzle", prompt: "Rokirovka qil: shohni ruh tomonga 2 katak sur", items: [{ fen: "4k3/8/8/8/8/8/8/4K2R w K -", goal: "castle" }, { fen: "r3k3/8/8/8/8/8/8/R3K3 w Q -", goal: "castle" }] },
+     { type: "choice", prompt: "Oq rokirovka qila oladimi?", items: [
+         { fen: "4k3/8/8/8/8/8/8/4K2R w K -", opts: ["Ha", "Yo'q"], ans: 0 },
+         { fen: "4k3/8/8/8/8/8/8/4KB1R w K -", opts: ["Ha", "Yo'q"], ans: 1, note: "Orada dona bormi?" },
+         { fen: "4k3/8/8/8/1b6/8/8/4K2R w K -", opts: ["Ha", "Yo'q"], ans: 1, note: "Shohga shah berilganmi?" },
+         { fen: "4kr2/8/8/8/8/8/8/4K2R w K -", opts: ["Ha", "Yo'q"], ans: 1, note: "Shoh hujumdagi katakdan o'tadimi?" }] },
+   ] },
+ { n: 18, g: "q", t: "Mot ovchilari",
+   intro: ["Motni topish tartibi:", "1) shah beradigan yurishlarni top; 2) har birida Q-T-U ni tekshir."],
+   tasks: [{ type: "puzzle", prompt: "Bir yurishda MOT qo'y!", items: [
+     { fen: "7k/8/5K2/8/8/8/8/6Q1 w - -", goal: "mate" }, { fen: "6k1/R7/8/8/8/8/8/1R4K1 w - -", goal: "mate" },
+     { fen: "3k4/8/3K4/8/8/8/8/Q7 w - -", goal: "mate" }, { fen: "6rk/6pp/8/6N1/8/8/8/6K1 w - -", goal: "mate" },
+     { fen: "k7/2P5/1K6/8/8/8/8/8 w - -", goal: "mate" }, { fen: "7k/Q7/6P1/8/8/8/8/K7 w - -", goal: "mate" }] }] },
+ { n: 19, g: "r", t: "Ikki ruh bilan mot — «Zinapoya»",
+   intro: ["Bir ruh qatorni to'sib turadi, ikkinchisi shah beradi — navbatma-navbat.", "Shoh ruhga yaqinlashsa — ruhni narigi chetga olib qoch!"],
+   tasks: [{ type: "game", prompt: "Ikki ruh bilan qora shohga mot qo'y! Ruhni yedirib qo'yma.", fen: "4k3/8/8/8/8/8/8/R6R w - -", ai: "endgame", rules: { lostPieceLoses: true } }] },
+ { n: 20, g: "q", t: "Farzin va Shoh birga",
+   intro: ["Farzin dushman shohning joyini toraytiradi, o'z shohing yordamga keladi.", "Har yurishda tekshir: unga yuradigan joy qoldimi? Aks holda — PAT!"],
+   tasks: [{ type: "game", prompt: "Farzin va shoh bilan mot qo'y! Pat qilib qo'yma.", fen: "4k3/8/8/8/8/8/8/3QK3 w - -", ai: "endgame", rules: { lostPieceLoses: true } }] },
+ { n: 21, g: "n", t: "Ot vilkasi — sehrli sanchqi",
+   intro: ["Vilka — bitta yurish bilan ikkita donaga birdaniga hujum qilish.", "Ot vilkasi eng xavfli!"],
+   tasks: [{ type: "puzzle", prompt: "Vilka qil: bir yurish bilan ikkita qora donaga hujum qil!", items: [
+     { fen: "r3k3/8/8/1N6/8/8/8/6K1 w - -", goal: "fork" }, { fen: "6k1/8/8/3q4/4N3/8/8/6K1 w - -", goal: "fork" }, { fen: "4k3/8/2n1b3/8/3P4/8/8/4K3 w - -", goal: "fork" }] }] },
+ { n: 22, g: "k", t: "O'yinni to'g'ri boshlash",
+   intro: ["3 ta oltin qoida:", "1) markazni egalla; 2) ot va fillarni chiqar; 3) rokirovka qil."],
+   tasks: [
+     { type: "choice", prompt: "Qaysi yurish yaxshiroq: A yoki B?", items: [
+         { fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -", arrows: [["e2", "e4", "A"], ["h2", "h4", "B"]], opts: ["A", "B"], ans: 0 },
+         { fen: "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq -", arrows: [["g1", "f3", "A"], ["g1", "h3", "B"]], opts: ["A", "B"], ans: 0 },
+         { fen: "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq -", arrows: [["e1", "g1", "A"], ["a2", "a4", "B"]], opts: ["A", "B"], ans: 0 }] },
+     { type: "game", prompt: "Kompyuter bilan to'liq o'yin! Oltin qoidalarni esla.", fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -", ai: "easy", rules: { full: true } },
+   ] },
+ { n: 23, g: "q", t: "Qirollik musobaqasi",
+   intro: ["Bugun musobaqa!", "Avval oson raqib bilan, keyin kuchliroq raqib bilan o'yna."],
+   tasks: [
+     { type: "game", prompt: "1-tur: oson raqib", fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -", ai: "easy", rules: { full: true } },
+     { type: "game", prompt: "2-tur: kuchliroq raqib", fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -", ai: "medium", rules: { full: true } },
+   ] },
+ { n: 24, g: "k", t: "Yakuniy bayram",
+   intro: ["Tabriklaymiz! Sen shaxmat qirolligining haqiqiy ritsari bo'lding.", "Ismingni yoz va sertifikatingni ol!"],
+   tasks: [{ type: "cert" }] },
+];
+
+const PUZZLES = [
+  "6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - -", "7k/8/5K2/8/8/8/8/6Q1 w - -", "6k1/R7/8/8/8/8/8/1R4K1 w - -", "k7/8/1K6/8/8/8/8/7R w - -",
+  "3k4/8/3K4/8/8/8/8/Q7 w - -", "6rk/6pp/8/6N1/8/8/8/6K1 w - -", "k7/2P5/1K6/8/8/8/8/8 w - -", "7k/Q7/6P1/8/8/8/8/K7 w - -",
+  "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4", "6k1/5p1p/6pB/8/8/8/8/3R2K1 w - -",
+  "5rk1/5pp1/8/6N1/8/8/8/6KQ w - -", "4k3/R7/8/8/8/8/8/4K2Q w - -",
+  // 2026-11-18: yana 20 ta — python-chess bilan yaratilgan, har birida mot qo'yadigan yurish faqat bitta
+  "8/5K2/7k/5Q2/8/8/8/8 w - -", "k1K3Q1/8/8/8/8/8/8/8 w - -", "8/8/8/1Q6/8/7k/5K2/8 w - -",
+  "8/8/8/8/3Q4/3K4/8/4k3 w - -", "8/8/5K1k/8/8/8/2R5/8 w - -", "8/5R2/8/k1K5/8/8/8/8 w - -",
+  "8/8/8/8/8/K3R3/8/k7 w - -", "1k6/8/1K5R/8/8/8/8/8 w - -", "7k/1R6/8/K4R2/8/8/8/8 w - -",
+  "6k1/7R/5K2/8/8/8/8/7R w - -", "1k6/ppp5/8/8/8/2Q5/8/5K2 w - -", "6k1/5ppp/8/8/8/8/7Q/6K1 w - -",
+  "5k2/4ppp1/8/8/8/8/8/3Q1K2 w - -", "8/3K4/6Q1/8/5N2/8/8/7k w - -", "8/8/4NK1k/8/8/1R6/8/8 w - -",
+  "8/8/8/8/4K3/3N4/7Q/k7 w - -", "3Q4/8/5K1k/8/8/8/8/4B3 w - -", "5k2/8/6Q1/8/4K3/8/1B6/8 w - -",
+  "4k3/6Q1/3P4/8/8/8/2K5/8 w - -", "2k5/8/1P6/4Q3/8/3K4/8/8 w - -",
+];
+if (false) module.exports = { LESSONS, PUZZLES, MODULES, RANKS };
+
+/* Ovoz: matn -> oldindan yozib qo'yilgan audio (AUDIO obyektida, kalit — matn xeshi). */
+const PRAISE = ["Barakalla!", "Zo'r!", "Ajoyib!", "Qoyil!", "Super!", "Juda yaxshi!"];
+const PIECE_NAMES = ["Shoh", "Farzin", "Ruh", "Fil", "Ot", "Piyoda"];
+const SQ_LET = { a: "a", b: "be", c: "se", d: "de", e: "e", f: "ef", g: "ge", h: "ha" };
+const NUMW = ["", "bir", "ikki", "uch", "to'rt", "besh", "olti", "yetti", "sakkiz"];
+const sqKey = n => "katak:" + n;
+
+function vh(s) {
+  let h = 2166136261;
+  for (const ch of s) { h ^= ch.codePointAt(0); h = Math.imul(h, 16777619); }
+  return (h >>> 0).toString(36);
+}
+const introSpeech = L => `${L.n}-dars. ${L.t}. ${L.intro.join(" ")}`;
+
+const VOICE_FIXED = [
+  ...PRAISE,
+  "Avval oldingi darsni tugat!", "Bomba! Bu katakka tushib bo'lmaydi", "Tosh! O'tib bo'lmaydi", "Eng qisqa yo'l!",
+  ...PIECE_NAMES.map(n => `${n} bunday yurmaydi`), ...PIECE_NAMES.map(n => `${n} bu yerda turmaydi`),
+  "Bunday yurib bo'lmaydi", "MOT!", "Bu PAT bo'ldi — durang! Boshqa yurish top.", "Yana bir o'ylab ko'r!",
+  "Shohingga shah! Avval uni qutqar", "Piyoda farzinga aylandi!", "Sen yutding!", "Durang! Hech kim yutmadi.",
+  "Bu safar raqib yutdi. Har bir mag'lubiyat — yangi dars!", "Avval pastdan donani tanla", "Parad tayyor!",
+  "Esla: farzin o'z rangidagi katakda turadi!", "Darsni tugatding!", ...["Piyoda", "Ot", "Fil", "Ruh", "Farzin", "Shoh"].map(n => `Yangi unvon: ${n}!`),
+  "Raqibni tanla", "Oson raqib. Omad!", "O'rta raqib. Diqqat bilan o'yna!", "Hamma masalalar yechildi!",
+  "Ismingni yoz va sertifikatingni ol!", "Natijalar o'chirildi",
+];
+
+/* TTS uchun talaffuzni yaxshilash: katak nomlari so'z bilan, tirelar va qo'shtirnoqlar olib tashlanadi. */
+function toSpeech(text) {
+  return text
+    .replace(/\b([a-h])([1-8]) (dan|gacha|ga|da)\b/g, (_, l, d, s) => `${SQ_LET[l]} ${NUMW[d]}${s}`)
+    .replace(/\b([a-h])([1-8])\b/g, (_, l, d) => `${SQ_LET[l]} ${NUMW[d]}`)
+    .replace(/[«»]/g, "").replace(/ — /g, ", ").replace(/\bQ-T-U\b/g, "Qu, Te, U")
+    .replace(/ = /g, " bu ").replace(/ \+ /g, " va ").replace(/(\d)\) /g, "$1. ")
+    .replace(/\b[A-Z][A-Z']+\b/g, w => w.toLowerCase())
+    // rasmiy imlo: oʻ gʻ (U+02BB) va tutuq belgisi ʼ (U+02BC) — o'lchovda talaffuz yaxshilandi
+    .replace(/([oOgG])'/g, "$1ʻ").replace(/'/g, "ʼ");
+}
+
+function voiceTexts(LESSONS, PUZZLES, WS) {
+  const out = new Map();
+  const add = (key, say) => { if (key && !out.has(key)) out.set(key, say || toSpeech(key)); };
+  VOICE_FIXED.forEach(t => add(t));
+  if (WS) { WS.WS_PHRASES.forEach(t => add(t)); WS.WORKSHEETS.forEach(W => W.parts.forEach(p => add(p.p))); }
+  for (const L of LESSONS) {
+    add(introSpeech(L));
+    for (const T of L.tasks) { add(T.prompt); (T.items || []).forEach(it => add(it.note)); }
+  }
+  for (const l of "abcdefgh") for (let d = 1; d <= 8; d++) add(sqKey(l + d), toSpeech(`${SQ_LET[l]}, ${NUMW[d]}`));
+  return [...out].map(([key, say]) => ({ h: vh(key), key, say }));
+}
+if (false) module.exports = { vh, voiceTexts, introSpeech, sqKey, PRAISE };
+
+/* Panda o'qituvchi — o'zimiz chizgan SVG qahramon. Holatlar: idle (ko'z qisadi), talk, wave, jump, shake. */
+const PANDA_SVG = `
+<svg class="panda" viewBox="0 0 200 220" aria-label="Panda o'qituvchi">
+  <g class="pd-body">
+    <ellipse cx="100" cy="212" rx="58" ry="7" fill="rgba(0,0,0,.12)"/>
+    <ellipse cx="100" cy="165" rx="56" ry="48" fill="#fff" stroke="#1d1d1d" stroke-width="3"/>
+    <ellipse cx="100" cy="172" rx="30" ry="26" fill="#F6E9D9"/>
+    <ellipse cx="66" cy="205" rx="20" ry="11" fill="#1d1d1d"/>
+    <ellipse cx="134" cy="205" rx="20" ry="11" fill="#1d1d1d"/>
+    <path d="M58 145 Q38 165 50 188" stroke="#1d1d1d" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <g class="pd-arm"><path d="M142 145 Q168 128 170 104" stroke="#1d1d1d" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <circle cx="170" cy="100" r="11" fill="#1d1d1d"/></g>
+    <g class="pd-pointer"><rect x="160" y="70" width="5" height="44" rx="2" fill="#B5823C" transform="rotate(25 162 92)"/></g>
+  </g>
+  <g class="pd-head">
+    <circle cx="56" cy="42" r="21" fill="#1d1d1d"/><circle cx="144" cy="42" r="21" fill="#1d1d1d"/>
+    <circle cx="56" cy="42" r="9" fill="#555"/><circle cx="144" cy="42" r="9" fill="#555"/>
+    <ellipse cx="100" cy="82" rx="58" ry="52" fill="#fff" stroke="#1d1d1d" stroke-width="3"/>
+    <ellipse cx="76" cy="78" rx="15" ry="20" fill="#1d1d1d" transform="rotate(-20 76 78)"/>
+    <ellipse cx="124" cy="78" rx="15" ry="20" fill="#1d1d1d" transform="rotate(20 124 78)"/>
+    <g class="pd-eyes"><circle cx="78" cy="76" r="7" fill="#fff"/><circle cx="122" cy="76" r="7" fill="#fff"/>
+      <circle cx="80" cy="77" r="3.6" fill="#1d1d1d"/><circle cx="120" cy="77" r="3.6" fill="#1d1d1d"/>
+      <circle cx="81.5" cy="75" r="1.3" fill="#fff"/><circle cx="121.5" cy="75" r="1.3" fill="#fff"/></g>
+    <ellipse cx="62" cy="100" rx="9" ry="5" fill="#FFB3B3" opacity=".7"/><ellipse cx="138" cy="100" rx="9" ry="5" fill="#FFB3B3" opacity=".7"/>
+    <ellipse cx="100" cy="96" rx="8" ry="6" fill="#1d1d1d"/>
+    <path class="pd-smile" d="M88 107 Q100 117 112 107" stroke="#1d1d1d" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse class="pd-mouth" cx="100" cy="111" rx="8" ry="7" fill="#7A2E2E" stroke="#1d1d1d" stroke-width="2"/>
+    <g class="pd-cap"><path d="M64 38 L100 22 L136 38 L100 54 Z" fill="#1F3B57"/><rect x="92" y="40" width="16" height="8" fill="#1F3B57"/>
+      <path d="M134 38 L138 58" stroke="#E0A526" stroke-width="2.5"/><circle cx="138" cy="60" r="3.5" fill="#E0A526"/></g>
+  </g>
+</svg>`;
+
+const Panda = {
+  el() { return document.querySelector(".panda"); },
+  pulse(cls, ms) { const e = this.el(); if (!e) return; e.classList.remove(cls); void e.getBoundingClientRect(); e.classList.add(cls); setTimeout(() => e.classList.remove(cls), ms); },
+  happy() { this.pulse("jump", 700); },
+  sad() { this.pulse("shake", 600); },
+  wave() { this.pulse("wave", 1600); },
+  talking(on) { const e = this.el(); if (e) e.classList.toggle("talk", on); },
+};
+
+/* Interaktiv varaqalar (PDF'dagi V1–V21 + K5, K7). Javoblar shaxmat dvigateli bilan hisoblanadi. */
+const P_PAINT_REACH = "bora oladigan hamma kataklarni bo'ya";
+const WORKSHEETS = [
+ { code: "V1", n: 1, t: "Taxtani bo'ya", parts: [
+   { t: "paint", p: "Hamma qora kataklarni bo'ya. Barmog'ingni sudrab bo'yasang ham bo'ladi!", fen: "8/8/8/8/8/8/8/8", targets: { dark: true }, coords: false },
+   { t: "place", p: "Yulduzni o'ng pastki oq burchakka qo'y", fen: "8/8/8/8/8/8/8/8", tray: { star: 1 }, goal: { h1: "star" }, coords: false }] },
+ { code: "V2", n: 2, t: "Uch xil yo'l", parts: [
+   { t: "arrows", p: "Yotgan yo'l chiz: bir katakdan boshlab, o'ngga yoki chapga sudra", fen: "8/8/8/8/8/8/8/8", mode: "line", kind: "rank" },
+   { t: "arrows", p: "Tik yo'l chiz: tepaga yoki pastga sudra", fen: "8/8/8/8/8/8/8/8", mode: "line", kind: "file" },
+   { t: "arrows", p: "Qiyshiq yo'l chiz: burchakka qarab sudra", fen: "8/8/8/8/8/8/8/8", mode: "line", kind: "diag" }] },
+ { code: "V3", n: 3, t: "Koordinata diktanti", parts: [
+   { t: "place", p: "Olmani c3 katakka qo'y", fen: "8/8/8/8/8/8/8/8", tray: { apple: 1 }, goal: { c3: "apple" } },
+   { t: "place", p: "Yulduzni f6 katakka qo'y", fen: "8/8/8/8/8/8/8/8", tray: { star: 1 }, goal: { f6: "star" } },
+   { t: "place", p: "Uychani a1 katakka qo'y", fen: "8/8/8/8/8/8/8/8", tray: { house: 1 }, goal: { a1: "house" } },
+   { t: "place", p: "Quyoshni h8 katakka qo'y", fen: "8/8/8/8/8/8/8/8", tray: { sun: 1 }, goal: { h8: "sun" } },
+   { t: "place", p: "Yurakni e4 katakka qo'y", fen: "8/8/8/8/8/8/8/8", tray: { heart: 1 }, goal: { e4: "heart" } },
+   { t: "place", p: "Gulni d5 katakka qo'y", fen: "8/8/8/8/8/8/8/8", tray: { flower: 1 }, goal: { d5: "flower" } }] },
+ { code: "V4", n: 4, t: "Ruh labirinti", parts: [
+   { t: "arrows", p: "Ruhni yulduzgacha olib bor: ruhdan strelka chizib yur. Toshlardan o'tib bo'lmaydi!", fen: "8/8/8/8/8/8/8/R7", mode: "path", stones: ["a5", "e1", "d4"], goal: "h8" },
+   { t: "arrows", p: "Ruhni yulduzgacha olib bor: ruhdan strelka chizib yur. Toshlardan o'tib bo'lmaydi!", fen: "8/8/8/8/8/8/8/R7", mode: "path", stones: ["a3", "c1", "c2", "f3", "b6", "h5", "e8"], goal: "h8" },
+   { t: "arrows", p: "Ruhni yulduzgacha olib bor: ruhdan strelka chizib yur. Toshlardan o'tib bo'lmaydi!", fen: "8/8/8/8/8/8/8/R7", mode: "path", stones: ["a4", "b1", "c3", "e2", "e7", "g5", "d5", "b5"], goal: "e5" }] },
+ { code: "V5", n: 4, t: "Ruh qayerga bora oladi?", parts: [
+   { t: "paint", p: "Ruh " + P_PAINT_REACH, fen: "8/8/8/8/3R4/8/8/8", targets: { reach: "d4" } },
+   { t: "paint", p: "Ruh bora oladigan kataklarni bo'ya. Qora donani yeya olsa, uni ham bo'ya!", fen: "8/1p6/4n3/8/8/1R3P2/8/8", targets: { reach: "b3" } }] },
+ { code: "V6", n: 5, t: "Fil va olmalar", parts: [
+   { t: "paint", p: "Fil " + P_PAINT_REACH, fen: "8/8/8/8/8/8/8/2B5", targets: { reach: "c1" } },
+   { t: "paint", p: "Fil bir yurishda yeya oladigan olmalarni bo'ya", fen: "8/8/8/8/3B4/8/8/8", apples: ["a1", "b6", "g7", "e1", "f3"], targets: { hit: "d4" } }] },
+ { code: "V7", n: 6, t: "Farzin quyoshi", parts: [
+   { t: "paint", p: "Farzin " + P_PAINT_REACH + " — quyosh chiqadi!", fen: "8/8/8/8/3Q4/8/8/8", targets: { reach: "d4" } },
+   { t: "paint", p: "Farzin bir yurishda yeya oladigan olmalarni bo'ya", fen: "8/8/8/4Q3/8/8/8/8", apples: ["b2", "e1", "h8", "c7", "a5", "g4", "b3", "f7"], targets: { hit: "e5" } }] },
+ { code: "V8", n: 7, t: "Shoh qadami", parts: [
+   { t: "paint", p: "Shoh " + P_PAINT_REACH, fen: "8/8/8/8/4K3/8/8/8", targets: { reach: "e4" } },
+   { t: "paint", p: "Burchakdagi shoh " + P_PAINT_REACH, fen: "8/8/8/8/8/8/8/K7", targets: { reach: "a1" } },
+   { t: "sort", p: "Ikki shoh shunday tura oladimi? Kartochkani to'g'ri qutiga sudra", boxes: ["Tura oladi", "Tura olmaydi"], cards: [
+     { fen: "8/8/4k3/8/4K3/8/8/8", ans: 0 }, { fen: "8/8/8/4k3/3K4/8/8/8", ans: 1 }, { fen: "8/8/8/8/8/8/8/K1k5", ans: 0 }, { fen: "7k/6K1/8/8/8/8/8/8", ans: 1 }] }] },
+ { code: "V9", n: 8, t: "Ot qayerga sakraydi?", parts: [
+   { t: "paint", p: "Ot sakray oladigan hamma kataklarni bo'ya", fen: "8/8/8/8/3N4/8/8/8", targets: { reach: "d4" } },
+   { t: "paint", p: "Burchakdagi ot qayerga sakray oladi? Bo'ya", fen: "8/8/8/8/8/8/8/N7", targets: { reach: "a1" } },
+   { t: "paint", p: "Bu ot qayerga sakray oladi? Bo'ya", fen: "8/8/8/8/8/8/6N1/8", targets: { reach: "g2" } }] },
+ { code: "V10", n: 9, t: "Otning yo'li", parts: [
+   { t: "arrows", p: "Otni yulduzgacha olib bor: otdan strelka chizib sakra. Bombaga tushma!", fen: "8/8/8/8/8/8/8/1N6", mode: "path", bombs: ["c3", "d4", "e5", "f4", "h4", "e7"], goal: "g6" }] },
+ { code: "V11", n: 10, t: "Piyoda kimni yeya oladi?", parts: [
+   { t: "paint", p: "Piyoda yeya oladigan qora donalarni bo'ya", fen: "8/8/8/2nbr3/3Pp3/8/8/8", targets: { reach: "d4" } },
+   { t: "paint", p: "Piyoda bora oladigan va yeya oladigan hamma kataklarni bo'ya", fen: "8/8/8/8/8/5p1p/6P1/8", targets: { reach: "g2" } }] },
+ { code: "V12", n: 11, t: "Piyodalar poygasi", parts: [
+   { t: "place", p: "Har bir piyoda oxirgi qatorga necha yurishda yetadi? Raqamni piyodaning ustiga qo'y", fen: "8/8/6P1/3P4/2P5/8/P7/8", tray: { n2: 1, n3: 1, n4: 1, n5: 1 }, goal: { g6: "n2", d5: "n3", c4: "n4", a2: "n5" } },
+   { t: "sort", p: "Piyoda oxirgi qatorda kimga aylana oladi? Donalarni qutilarga sudra", boxes: ["Aylana oladi", "Aylana olmaydi"], cards: [
+     { glyph: "Q", ans: 0 }, { glyph: "R", ans: 0 }, { glyph: "B", ans: 0 }, { glyph: "N", ans: 0 }, { glyph: "K", ans: 1 }] }] },
+ { code: "V13", n: 12, t: "Donalar narxi", parts: [
+   { t: "sort", p: "Har bir donani o'z narxi yozilgan qutiga sudra", boxes: ["1 tanga", "3 tanga", "5 tanga", "9 tanga"], cards: [
+     { glyph: "P", ans: 0 }, { glyph: "N", ans: 1 }, { glyph: "B", ans: 1 }, { glyph: "R", ans: 2 }, { glyph: "Q", ans: 3 }] }] },
+ { code: "V14", n: 13, t: "Qaysi dona himoyasiz?", parts: [
+   { t: "paint", p: "Himoyasiz qora donalarni bo'ya", fen: "r7/1p6/2n5/8/8/8/8/8", targets: { undef: true } },
+   { t: "paint", p: "Himoyasiz qora donalarni bo'ya", fen: "3q4/4p3/5b2/7n/8/8/8/8", targets: { undef: true } },
+   { t: "paint", p: "Himoyasiz qora donalarni bo'ya", fen: "8/r7/8/5p2/4n3/8/r7/8", targets: { undef: true } },
+   { t: "paint", p: "Himoyasiz qora donalarni bo'ya", fen: "8/8/3p4/2b5/6n1/8/8/8", targets: { undef: true } }] },
+ { code: "V15", n: 14, t: "Shohni qutqar: Q-T-U", parts: [
+   { t: "qtu", p: "Qora shohni qanday qutqarsa bo'ladi? Ishlaydigan harflarni tanla", fen: "4k3/8/8/8/8/8/8/4R1K1 b - -" },
+   { t: "qtu", p: "Qora shohni qanday qutqarsa bo'ladi? Ishlaydigan harflarni tanla", fen: "4k3/3r4/8/8/8/8/8/4R1K1 b - -" },
+   { t: "qtu", p: "Qora shohni qanday qutqarsa bo'ladi? Ishlaydigan harflarni tanla", fen: "4k3/8/8/8/8/8/8/r3R1K1 b - -" },
+   { t: "qtu", p: "Qora shohni qanday qutqarsa bo'ladi? Ishlaydigan harflarni tanla", fen: "3rkr2/3p1p2/8/2b5/8/8/8/4R2K b - -" }] },
+ { code: "V16", n: 15, t: "Bu motmi?", parts: [
+   { t: "sort", p: "Qora yuradi. Kartochkani «Mot» yoki «Mot emas» qutisiga sudra", boxes: ["Mot", "Mot emas"], cards: [
+     { fen: "4R1k1/5ppp/8/8/8/8/5PPP/6K1 b - -", ans: 0 }, { fen: "4k3/8/8/8/8/8/8/4R1K1 b - -", ans: 1 },
+     { fen: "7k/5Q2/6K1/8/8/8/8/8 b - -", ans: 1 }, { fen: "R5k1/1R6/8/8/8/8/8/6K1 b - -", ans: 0 }] }] },
+ { code: "V17", n: 16, t: "Pat qilib qo'yma!", parts: [
+   { t: "sort", p: "Farzin shunday yursa nima bo'ladi? Kartochkani to'g'ri qutiga sudra", boxes: ["Mot", "Pat", "Shah"], cards: [
+     { fen: "7k/8/6K1/3Q4/8/8/8/8 w - -", move: "d5d8", ans: 0 }, { fen: "7k/8/6K1/3Q4/8/8/8/8 w - -", move: "d5f7", ans: 1 },
+     { fen: "7k/8/6K1/3Q4/8/8/8/8 w - -", move: "d5h1", ans: 2 }] }] },
+ { code: "V18", n: 17, t: "Rokirovkadan keyin", parts: [
+   { t: "place", p: "Qisqa rokirovkadan keyin shoh va ruh qayerda turadi? Tojni shohning, doirani ruhning yangi katagiga qo'y", fen: "4k3/8/8/8/8/8/8/4K2R", tray: { crown: 1, circle: 1 }, goal: { g1: "crown", f1: "circle" } },
+   { t: "place", p: "Uzun rokirovkadan keyin-chi? Tojni shohning, doirani ruhning yangi katagiga qo'y", fen: "4k3/8/8/8/8/8/8/R3K3", tray: { crown: 1, circle: 1 }, goal: { c1: "crown", d1: "circle" } }] },
+ { code: "V19", n: 18, t: "1 yurishda mot", parts: [
+   "6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - -", "7k/8/5K2/8/8/8/8/6Q1 w - -", "6k1/R7/8/8/8/8/8/1R4K1 w - -",
+   "k7/8/1K6/8/8/8/8/7R w - -", "3k4/8/3K4/8/8/8/8/Q7 w - -", "6rk/6pp/8/6N1/8/8/8/6K1 w - -"
+ ].map(fen => ({ t: "arrows", p: "Oq yuradi. Mot qo'yadigan yurishni strelka bilan chiz!", fen, mode: "mate" })) },
+ { code: "V20", n: 21, t: "Vilka bormi?", parts: [
+   "r3k3/8/8/1N6/8/8/8/6K1 w - -", "6k1/8/8/3q4/4N3/8/8/6K1 w - -", "4k3/8/2n1b3/8/3P4/8/8/4K3 w - -", "r3k3/8/8/8/8/8/8/N3K3 w - -"
+ ].map(fen => ({ t: "arrows", p: "Vilka bormi? Bo'lsa — strelka bilan chiz. Bo'lmasa — «Vilka yo'q» tugmasini bos", fen, mode: "fork", allowNone: true })) },
+ { code: "V21", n: 22, t: "Qaysi yurish yaxshi?", parts: [
+   { t: "choice", p: "Qaysi yurish yaxshiroq: A yoki B?", items: [
+     { fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -", arrows: [["e2", "e4", "A"], ["h2", "h4", "B"]], opts: ["A", "B"], ans: 0 },
+     { fen: "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq -", arrows: [["g1", "f3", "A"], ["g1", "h3", "B"]], opts: ["A", "B"], ans: 0 },
+     { fen: "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq -", arrows: [["e1", "g1", "A"], ["a2", "a4", "B"]], opts: ["A", "B"], ans: 0 }] }] },
+ { code: "K5", n: 16, t: "Shah, mot yoki pat?", parts: [
+   { t: "sort", p: "Qora yuradi. Har bir kartochkani «Shah», «Mot» yoki «Pat» qutisiga sudra", boxes: ["Shah", "Mot", "Pat"], cards: [
+     "4R1k1/5ppp/8/8/8/8/5PPP/6K1 b - -", "7k/5Q2/6K1/8/8/8/8/8 b - -", "4k3/8/8/8/8/8/8/4R1K1 b - -", "7k/6Q1/5K2/8/8/8/8/8 b - -",
+     "k7/2Q5/1K6/8/8/8/8/8 b - -", "7k/8/8/8/8/8/8/B5K1 b - -", "R5k1/1R6/8/8/8/8/8/6K1 b - -", "7k/7P/6K1/8/8/8/8/8 b - -",
+     "4k3/8/3N4/8/8/8/8/6K1 b - -", "k1Q5/8/1K6/8/8/8/8/8 b - -", "k7/P7/1K6/8/8/8/8/8 b - -", "4k3/8/8/1B6/8/8/8/6K1 b - -"
+   ].map(fen => ({ fen, ans: "smp" })) }] },
+ { code: "K7", n: 17, t: "Rokirovka mumkinmi?", parts: [
+   { t: "sort", p: "Oq rokirovka qila oladimi? Kartochkani qutiga sudra", boxes: ["Ha", "Yo'q"], cards: [
+     { fen: "4k3/8/8/8/8/8/8/4K2R w K -", ans: 0 }, { fen: "4k3/8/8/8/8/8/8/4KB1R w K -", ans: 1 },
+     { fen: "4k3/8/8/8/1b6/8/8/4K2R w K -", ans: 1 }, { fen: "4kr2/8/8/8/8/8/8/4K2R w K -", ans: 1 },
+     { fen: "r3k3/8/8/8/8/8/8/R3K3 w Q -", ans: 0 }] }] },
+];
+
+const WS_PHRASES = [
+  "Hali hammasi emas. Sariq kataklarga qara!", "Qizil kataklar noto'g'ri. Ularni o'chir!", "Bu katakka emas. Yana urinib ko'r!",
+  "Bu yurish qoidaga to'g'ri kelmaydi", "Bu mot emas. Boshqa yurish top!", "Bu vilka emas. Yana urinib ko'r!", "To'g'ri, bu yerda vilka yo'q!",
+  "Bu yerda vilka bor. Topishga harakat qil!", "Toshdan o'tib bo'lmaydi!", "Bomba! Bu katakka tushib bo'lmaydi",
+  "Bu yotgan yo'l emas", "Bu tik yo'l emas", "Bu qiyshiq yo'l emas", "Yo'l kamida uchta katakdan iborat bo'lsin",
+  "Bu qutiga emas. Yana o'ylab ko'r!", "Varaqa tugadi!", "Salom! Bugun birga o'ynaymiz!", "Tekshiraylik!",
+  "Avval donadan boshla", "Bir yoki bir nechta harfni tanla",
+];
+if (false) module.exports = { WORKSHEETS, WS_PHRASES };
+
+/* «Shaxmat qirolligi» — bolalar uchun interaktiv dastur (interfeys). */
+(() => {
+const $app = document.getElementById("app");
+const GL = { k: "♚", q: "♛", r: "♜", b: "♝", n: "♞", p: "♟" };
+const NAME = { k: "Shoh", q: "Farzin", r: "Ruh", b: "Fil", n: "Ot", p: "Piyoda" };
+const sq = n => Chess.sqIdx(n);
+const nm = s => Chess.sqName(s);
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/* Ekran avlodi: yangi ekranga o'tilganda (yoki o'yin qaytadan boshlanganda) eski taymerlar bekor bo'ladi.
+   Aks holda bola tez «orqaga» bossa, eski topshiriq yangi ekran ustiga qaytib chiqardi. */
+let GEN = 0;
+const newScreen = () => ++GEN;
+const later = (fn, ms) => { const g = GEN; return setTimeout(() => { if (g === GEN) fn(); }, ms); };
+
+/* ---------------- Saqlash (brauzer xotirasi) ---------------- */
+const KEY = "shaxmat-qirolligi-v1";
+let P = { stars: {}, unlockAll: false, sound: true, voice: true, voiceId: "m", hints: true, name: "" };
+try { Object.assign(P, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(P)); } catch (e) {} };
+const doneCount = () => LESSONS.filter(L => P.stars[L.n] > 0).length;
+const totalStars = () => Object.values(P.stars).reduce((a, b) => a + b, 0);
+const rankOf = cnt => { let r = null; for (const R of RANKS) if (cnt >= R.at) r = R; return r; };
+const unlocked = n => P.unlockAll || n === 1 || P.stars[n - 1] > 0;
+
+/* ---------------- Tovushlar (ovozsiz rejim — faqat qisqa signal) ---------------- */
+let AC = null;
+function tone(freqs, dur = 0.12, type = "sine", vol = 0.12) {
+  if (!P.sound) return;
+  try {
+    AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+    freqs.forEach((f, i) => {
+      const o = AC.createOscillator(), g = AC.createGain(), t = AC.currentTime + i * dur;
+      o.type = type; o.frequency.value = f; g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur * 1.6);
+      o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t + dur * 1.7);
+    });
+  } catch (e) {}
+}
+const sOk = () => tone([660, 880]), sBad = () => tone([220, 180], 0.14, "triangle"), sMove = () => tone([440], 0.05, "triangle", 0.06);
+const sWin = () => tone([523, 659, 784, 1046], 0.13);
+
+function confetti() {
+  const box = document.createElement("div"); box.className = "confetti";
+  const cols = ["#E0A526", "#3A7CA5", "#2E7D6B", "#B5523B", "#7B4B94", "#F28C28"];
+  for (let i = 0; i < 60; i++) {
+    const c = document.createElement("i");
+    c.style.left = Math.random() * 100 + "%"; c.style.background = pick(cols);
+    c.style.animationDelay = Math.random() * 0.6 + "s"; c.style.transform = `rotate(${Math.random() * 360}deg)`;
+    box.appendChild(c);
+  }
+  document.body.appendChild(box); setTimeout(() => box.remove(), 2800);
+}
+
+/* ---------------- Ovoz (oldindan yozilgan o'zbekcha audio) ---------------- */
+const player = new Audio(); let queue = []; let CURSAY = null; window.__missing = [];
+function audioFor(key) {
+  const bank = P.voiceId === "m" ? (typeof AUDIO_M !== "undefined" && AUDIO_M) : (typeof AUDIO_F !== "undefined" && AUDIO_F);
+  const d = bank && bank[vh(key)];
+  if (!d) { window.__missing.push(key); return null; }
+  return "data:audio/mpeg;base64," + d;
+}
+function playNext() {
+  const k = queue.shift(); if (k === undefined) return;
+  const src = audioFor(k); if (!src) return playNext();
+  player.src = src; player.play().catch(() => {});
+}
+player.onended = () => { Panda.talking(false); playNext(); };
+player.onplay = () => Panda.talking(true);
+player.onpause = () => Panda.talking(false);
+function speak(keys, { interrupt = true } = {}) {
+  if (!P.voice) return;
+  keys = [].concat(keys).filter(Boolean);
+  const idle = player.paused || player.ended;
+  if (interrupt) { queue = []; player.pause(); }
+  queue.push(...keys);
+  if (interrupt || idle) playNext();
+}
+/* Topshiriq matni: o'zi gapiradi (oldingi maqtov tugagach) va 🔊 tugmasi uni qaytaradi */
+function sayPrompt(keys) { CURSAY = [].concat(keys); speak(CURSAY, { interrupt: false }); }
+
+function toast(text, kind = "ok", ms = 1300, say = null) {
+  const t = document.createElement("div"); t.className = "toast " + kind; t.textContent = text;
+  document.body.appendChild(t); setTimeout(() => t.remove(), ms);
+  if (kind === "bad") Panda.sad(); else Panda.happy();
+  speak(say || [text]);
+}
+
+/* ---------------- Taxta ---------------- */
+const GLW = { k: "♔", q: "♕", r: "♖", b: "♗", n: "♘", p: "♙" };
+/* Oq dona: ostida oq rangli to'liq shakl, ustida qora kontur — har qanday o'lchamda aniq ko'rinadi. */
+const pieceHTML = p => {
+  const t = p.toLowerCase();
+  return p === p.toUpperCase()
+    ? `<span class="pc w"><span class="f">${GL[t]}︎</span><span class="o">${GLW[t]}︎</span></span>`
+    : `<span class="pc b">${GL[t]}︎</span>`;
+};
+const MARK = { apple: "🍎", star: "⭐", bomb: "💣" };
+
+function boardHTML(m) {
+  let h = "";
+  for (let r = 7; r >= 0; r--) for (let f = 0; f < 8; f++) {
+    const s = r * 8 + f, cls = ["sq", (f + r) % 2 === 0 ? "d" : "l"];
+    if (m.sel === s) cls.push("sel");
+    if (m.last && (m.last.from === s || m.last.to === s)) cls.push("last");
+    if (m.hl && m.hl[s]) cls.push(m.hl[s]);
+    if (m.check === s) cls.push("chk");
+    let inner = "";
+    const mk = m.marks && m.marks[s];
+    if (mk) inner += `<em class="mk">${MARK[mk] || ""}</em>`;
+    const p = m.st ? m.st.b[s] : "";
+    if (p === "S") inner += '<i class="stone"></i>'; else if (p) inner += pieceHTML(p);
+    if (m.dots && m.dots.has(s)) inner += `<i class="dot${p && p !== "S" ? " cap" : ""}"></i>`;
+    if (m.coords !== false) {
+      if (f === 0) inner += `<b class="rk">${r + 1}</b>`;
+      if (r === 0) inner += `<b class="fl">${"abcdefgh"[f]}</b>`;
+    }
+    h += `<div class="${cls.join(" ")}" data-sq="${s}">${inner}</div>`;
+  }
+  return `<div class="board${m.small ? " small" : ""}">${h}${arrowsSVG(m.arrows)}</div>`;
+}
+
+function arrowsSVG(arrows) {
+  if (!arrows || !arrows.length) return "";
+  const cols = ["#1E7A3C", "#B5523B", "#2F6FD0"];
+  let s = '<svg class="arrows" viewBox="0 0 8 8">';
+  arrows.forEach(([a, b, lab], i) => {
+    const A = sq(a), B = sq(b), c = cols[i % 3];
+    const x1 = (A & 7) + 0.5, y1 = 7 - (A >> 3) + 0.5, x2 = (B & 7) + 0.5, y2 = 7 - (B >> 3) + 0.5;
+    const ang = Math.atan2(y2 - y1, x2 - x1), hl = 0.38;
+    const ex = x2 - Math.cos(ang) * hl * 0.8, ey = y2 - Math.sin(ang) * hl * 0.8;
+    const p1 = [x2 - hl * Math.cos(ang - 0.5), y2 - hl * Math.sin(ang - 0.5)], p2 = [x2 - hl * Math.cos(ang + 0.5), y2 - hl * Math.sin(ang + 0.5)];
+    s += `<line x1="${x1}" y1="${y1}" x2="${ex}" y2="${ey}" stroke="${c}" stroke-width="0.13" stroke-linecap="round" opacity=".9"/>`;
+    s += `<polygon points="${x2},${y2} ${p1} ${p2}" fill="${c}"/>`;
+    if (lab) {
+      const mx = (x1 + ex) / 2, my = (y1 + ey) / 2;
+      s += `<circle cx="${mx}" cy="${my}" r="0.3" fill="#fff" stroke="${c}" stroke-width="0.06"/>`;
+      s += `<text x="${mx}" y="${my + 0.12}" font-size="0.34" text-anchor="middle" font-weight="700" fill="${c}">${lab}</text>`;
+    }
+  });
+  return s + "</svg>";
+}
+
+function onBoard(el, fn) {
+  el.querySelector(".board").addEventListener("click", e => {
+    const d = e.target.closest("[data-sq]"); if (d) fn(Number(d.dataset.sq));
+  });
+}
+
+/* ---------------- Ekran ramkasi ---------------- */
+function frame({ title, prompt, body, foot = "", back = goHome, progress = null }) {
+  $app.innerHTML = `
+    <header class="bar"><button class="ic" id="back" aria-label="Orqaga">←</button>
+      <div class="ttl">${title}</div>${progress ? `<div class="prog">${progress}</div>` : ""}</header>
+    <main class="body${prompt ? " wt" : ""}">${prompt ? `<aside class="teacher"><div class="pwrap">${PANDA_SVG}</div>
+      <div class="bubble prompt">${CURSAY && P.voice ? '<button class="say" id="say" aria-label="Qayta eshitish">🔊</button>' : ""}<span>${prompt}</span></div></aside>` : ""}
+      <div class="content">${body}</div></main><footer class="foot">${foot}</footer>`;
+  document.getElementById("back").onclick = () => { newScreen(); queue = []; player.pause(); back(); };
+  const sb = document.getElementById("say"); if (sb) sb.onclick = () => speak(CURSAY);
+  if (!player.paused) Panda.talking(true);
+}
+
+/* ---------------- Bosh sahifa: qirollik xaritasi ---------------- */
+function goHome() {
+  newScreen(); CURSAY = null;
+  const cnt = doneCount(), R = rankOf(cnt);
+  let mods = "";
+  for (const M of MODULES) {
+    let items = "";
+    for (const L of LESSONS.filter(l => l.n >= M.from && l.n <= M.to)) {
+      const st = P.stars[L.n] || 0, open = unlocked(L.n);
+      items += `<button class="lsn${open ? "" : " lock"}${st ? " done" : ""}" data-n="${L.n}" style="--mc:${M.color}">
+        <span class="num">${open ? L.n : "🔒"}</span><span class="lg">${pieceHTML(L.g.toUpperCase())}</span>
+        <span class="lt">${L.t}</span><span class="st">${"★".repeat(st)}${"☆".repeat(3 - st)}</span></button>`;
+    }
+    mods += `<section class="mod"><h3 style="color:${M.color}">${M.n}-modul. ${M.name}</h3><div class="grid">${items}</div></section>`;
+  }
+  $app.innerHTML = `
+    <header class="hero"><div class="crown hp">${PANDA_SVG}</div><div><h1>Shaxmat qirolligi</h1>
+      <p>${cnt} / 24 dars · ★ ${totalStars()}</p></div>
+      <div class="rank">${R ? pieceHTML(R.g.toUpperCase()) + `<b>${R.name}</b>` : "<small>Unvon hali yo'q</small>"}</div></header>
+    <nav class="quick"><button id="qWs">📝 Varaqalar</button><button id="qPlay">♟ Kompyuter bilan o'yna</button><button id="qPuz">⭐ Masalalar <span class="cnt">${Math.min(P.puz || 0, PUZZLES.length)} / ${PUZZLES.length}</span></button><button id="qSet">⚙️ Sozlamalar</button></nav>
+    ${mods}`;
+  $app.querySelectorAll(".lsn").forEach(b => b.onclick = () => {
+    const n = Number(b.dataset.n);
+    if (!unlocked(n)) { sBad(); toast("Avval oldingi darsni tugat!", "bad"); return; }
+    openLesson(LESSONS[n - 1]);
+  });
+  document.getElementById("qPlay").onclick = freePlay;
+  document.getElementById("qPuz").onclick = puzzleMode;
+  document.getElementById("qSet").onclick = settings;
+  document.getElementById("qWs").onclick = () => window.openWorksheets();
+  window.scrollTo(0, 0); setTimeout(() => Panda.wave(), 300);
+}
+
+/* ---------------- Dars ---------------- */
+let CUR = null;
+function openLesson(L) {
+  newScreen(); CUR = { L, ti: 0, res: [] };
+  frame({ title: `${L.n}-dars`, prompt: "", body: `
+    <div class="intro"><div class="big introp"><div class="pwrap">${PANDA_SVG}</div>${pieceHTML(L.g.toUpperCase())}</div><h2>${L.t}</h2>
+      ${L.intro.map(t => `<p>${t}</p>`).join("")}<p class="tasks">${L.tasks.length} ta topshiriq</p>
+      ${P.voice ? '<button class="btn ghost" id="say2">🔊 Tinglash</button>' : ""}</div>`,
+    foot: `<button class="btn big" id="go">Boshlash ▶</button>` });
+  document.getElementById("go").onclick = () => { queue = []; player.pause(); runTask(); };
+  const s2 = document.getElementById("say2"); if (s2) s2.onclick = () => speak(introSpeech(L));
+  speak(introSpeech(L));
+}
+
+function progressDots() {
+  return CUR.L.tasks.map((_, i) => `<i class="${i < CUR.ti ? "on" : i === CUR.ti ? "cur" : ""}"></i>`).join("");
+}
+
+function runTask() {
+  newScreen();
+  const T = CUR.L.tasks[CUR.ti];
+  const ctx = { title: `${CUR.L.n}. ${CUR.L.t}`, progress: progressDots(), back: () => openLesson(CUR.L) };
+  let fin = false;   // ikki marta tez bosilsa ham topshiriq bir marta tugaydi (aks holda keyingisi o'tib ketardi)
+  TASKS[T.type](T, ctx, stars => {
+    if (fin) return; fin = true;
+    CUR.res.push(stars); CUR.ti++;
+    if (CUR.ti < CUR.L.tasks.length) later(runTask, 350); else finishLesson();
+  });
+}
+
+function finishLesson() {
+  newScreen();
+  const L = CUR.L, before = rankOf(doneCount());
+  const stars = Math.max(1, Math.round(CUR.res.reduce((a, b) => a + b, 0) / CUR.res.length));
+  P.stars[L.n] = Math.max(P.stars[L.n] || 0, stars); save();
+  const after = rankOf(doneCount());
+  sWin(); confetti(); CURSAY = null;
+  const newRank = after && (!before || after.at !== before.at), pr = pick(PRAISE);
+  speak([pr, "Darsni tugatding!", newRank ? `Yangi unvon: ${after.name}!` : null], { interrupt: false });
+  frame({ title: `${L.n}-dars tugadi`, body: `
+    <div class="intro"><div class="stars">${"★".repeat(stars)}<span>${"★".repeat(3 - stars)}</span></div>
+      <h2>${pr}</h2><p>«${L.t}» darsini tugatding!</p>
+      ${newRank ? `<div class="newrank">${pieceHTML(after.g.toUpperCase())}<p>Yangi unvon: <b>${after.name}</b>!</p></div>` : ""}</div>`,
+    foot: `<button class="btn ghost" id="map">Xaritaga</button>${L.n < 24 ? '<button class="btn big" id="nx">Keyingi dars ▶</button>' : ""}` });
+  document.getElementById("map").onclick = goHome;
+  const nx = document.getElementById("nx"); if (nx) nx.onclick = () => openLesson(LESSONS[L.n]);
+}
+
+const starsBy = mistakes => mistakes <= 1 ? 3 : mistakes <= 3 ? 2 : 1;
+
+/* ---------------- Topshiriq turlari ---------------- */
+const TASKS = {};
+
+/* Kataklarni bosish */
+TASKS.tap = (T, ctx, done) => {
+  const st = Chess.parse(T.fen.includes(" ") ? T.fen : T.fen + " w - -");
+  let targets;
+  if (T.reachOf) {
+    const from = sq(T.reachOf);
+    targets = new Set(Chess.legal(st, "w").filter(m => m.from === from && (!m.promo || m.promo === "q")).map(m => m.to));
+  } else targets = new Set(T.targets.map(sq));
+  const marks = {}; for (const k in (T.marks || {})) marks[sq(k)] = T.marks[k];
+  const hl = {}; let mistakes = 0, found = 0;
+  sayPrompt(T.prompt);
+  const draw = () => {
+    frame({ ...ctx, prompt: `${T.prompt} <span class="cnt">${found} / ${targets.size}</span>`,
+      body: boardHTML({ st, marks, hl, coords: T.coords }), foot: `<button class="btn ghost" id="hint">💡 Yordam</button>` });
+    onBoard($app, s => {
+      if (hl[s] === "ok" || found === targets.size) return;
+      if (targets.has(s)) {
+        hl[s] = "ok"; found++; sOk();
+        if (found === targets.size) { draw(); toast(pick(PRAISE)); later(() => done(starsBy(mistakes)), 900); return; }
+      } else { mistakes++; sBad(); hl[s] = "bad"; draw(); later(() => { delete hl[s]; draw(); }, 500); return; }
+      draw();
+    });
+    document.getElementById("hint").onclick = () => {
+      const left = [...targets].find(s => hl[s] !== "ok"); if (left === undefined) return;
+      mistakes++; hl[left] = "hint"; draw(); later(() => { if (hl[left] === "hint") delete hl[left]; draw(); }, 900);
+    };
+  };
+  draw();
+};
+
+/* Koordinata: katakni top */
+TASKS.coord = (T, ctx, done) => {
+  let round = 0, mistakes = 0, target = -1, hl = {}, busy = false;
+  const next = () => {
+    let t; do t = Math.floor(Math.random() * 64); while (t === target);   // ketma-ket bir xil katak chiqmasin
+    target = t; hl = {}; busy = false;
+    if (round === 0) sayPrompt([T.prompt, sqKey(nm(target))]);
+    else { CURSAY = [T.prompt, sqKey(nm(target))]; speak(sqKey(nm(target)), { interrupt: false }); }
+    draw();
+  };
+  const draw = () => {
+    frame({ ...ctx, prompt: `${T.prompt}: <span class="coordq">${nm(target)}</span> <span class="cnt">${round + 1} / ${T.rounds}</span>`,
+      body: boardHTML({ st: null, hl }) });
+    onBoard($app, s => {
+      if (busy) return;
+      if (s === target) {
+        busy = true; sOk(); hl = { [s]: "ok" }; draw(); round++;
+        if (round >= T.rounds) { toast(pick(PRAISE)); later(() => done(starsBy(mistakes)), 800); }
+        else later(next, 600);
+      } else {
+        sBad(); mistakes++; hl = { [s]: "bad", [target]: "hint" }; draw();
+        const tg = target; later(() => { if (tg === target && !busy) { hl = {}; draw(); } }, 900);
+      }
+    });
+  };
+  next();
+};
+
+/* Yo'l: olma terish, labirint, bombalar */
+function pathPar(T) {
+  const base = Chess.parse(T.fen + " w - -");
+  (T.stones || []).forEach(s => base.b[sq(s)] = "S");
+  const start = base.b.findIndex(p => p && p !== "S"), piece = base.b[start];
+  const apples = (T.apples || []).map(sq), bombs = new Set((T.bombs || []).map(sq)), goal = T.goal ? sq(T.goal) : -1;
+  const full = (1 << apples.length) - 1, seen = new Map(), q = [[start, 0, 0]];
+  seen.set(start + ":0", 0);
+  while (q.length) {
+    const [s, mask, d] = q.shift();
+    if (mask === full && (goal < 0 || s === goal)) return d;
+    const b = base.b.slice(); b[start] = ""; b[s] = piece;
+    for (const m of Chess.legal({ b, turn: "w", castle: "", ep: -1 }, "w")) {
+      if (bombs.has(m.to)) continue;
+      const ai = apples.indexOf(m.to), nmask = ai >= 0 ? mask | (1 << ai) : mask, key = m.to + ":" + nmask;
+      if (!seen.has(key)) { seen.set(key, d + 1); q.push([m.to, nmask, d + 1]); }
+    }
+  }
+  return 99;
+}
+
+TASKS.path = (T, ctx, done) => {
+  const par = pathPar(T);
+  let st, apples, moves, sel, mistakes, fin;
+  const bombs = new Set((T.bombs || []).map(sq)), goal = T.goal ? sq(T.goal) : -1;
+  const reset = () => {
+    newScreen();   // tugatgandan keyin «Qaytadan» bosilsa, keyingi topshiriqqa o'tib ketmasin
+    st = Chess.parse(T.fen + " w - -"); (T.stones || []).forEach(s => st.b[sq(s)] = "S");
+    apples = new Set((T.apples || []).map(sq)); moves = 0; sel = null; mistakes = 0; fin = false; draw();
+  };
+  const legalFrom = s => Chess.legal({ ...st, turn: "w" }, "w").filter(m => m.from === s && !bombs.has(m.to));
+  const draw = () => {
+    const marks = {}; apples.forEach(a => marks[a] = "apple"); bombs.forEach(b => marks[b] = "bomb"); if (goal >= 0) marks[goal] = "star";
+    const dots = sel !== null && P.hints ? new Set(legalFrom(sel).map(m => m.to)) : null;
+    frame({ ...ctx, prompt: `${T.prompt} <span class="cnt">Yurishlar: ${moves}</span>`,
+      body: boardHTML({ st, marks, sel, dots }), foot: `<button class="btn ghost" id="rs">↻ Qaytadan</button>` });
+    document.getElementById("rs").onclick = reset;
+    onBoard($app, s => {
+      if (fin) return;
+      const p = st.b[s];
+      if (p && p !== "S" && Chess.colorOf(p) === "w") { sel = s; draw(); return; }
+      if (sel === null) return;
+      const m = legalFrom(sel).find(x => x.to === s);
+      if (!m) {
+        if (bombs.has(s)) { sBad(); toast("Bomba! Bu katakka tushib bo'lmaydi", "bad"); }
+        else if (st.b[s] === "S") { sBad(); toast("Tosh! O'tib bo'lmaydi", "bad"); }
+        else { sBad(); toast(`${NAME[st.b[sel].toLowerCase()]} bunday yurmaydi`, "bad"); }
+        mistakes++; return;
+      }
+      st = Chess.make(st, m); st.turn = "w"; sel = s; moves++; sMove();
+      if (apples.delete(s)) sOk();
+      draw();
+      if (!apples.size && (goal < 0 || s === goal)) {
+        fin = true;
+        const stars = moves <= par ? 3 : moves <= par + 2 ? 2 : 1, pr = pick(PRAISE);
+        if (moves <= par) toast(`${pr} Eng qisqa yo'l!`, "ok", 1300, [pr, "Eng qisqa yo'l!"]); else toast(pr);
+        later(() => done(stars), 1000);
+      }
+    });
+  };
+  sayPrompt(T.prompt);
+  reset();
+};
+
+/* Tanlov savollari */
+TASKS.choice = (T, ctx, done) => {
+  let i = 0, mistakes = 0, spokenNote = -1, busy = false;
+  sayPrompt(T.prompt);
+  const draw = () => {
+    const it = T.items[i];
+    if (it.note && spokenNote !== i) { spokenNote = i; speak(it.note, { interrupt: false }); }
+    let body = "";
+    if (it.fen) body += boardHTML({ st: Chess.parse(it.fen), arrows: it.arrows, small: true });
+    else if (it.q) body += `<div class="bigq">${it.q}</div>`;
+    if (it.note) body += `<p class="note">💡 ${it.note}</p>`;
+    const opts = it.opts.map((o, k) => `<button class="opt${o.startsWith("g:") ? " glyph" : ""}" data-k="${k}">${
+      o.startsWith("g:") ? pieceHTML(o[2]) + `<small>${NAME[o[2].toLowerCase()]}</small>` : o}</button>`).join("");
+    frame({ ...ctx, prompt: `${T.prompt} <span class="cnt">${i + 1} / ${T.items.length}</span>`, body: body + `<div class="opts">${opts}</div>` });
+    $app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+      if (busy) return;   // to'g'ri javob ikki marta bosilsa, savol o'tib ketmasin
+      if (Number(b.dataset.k) === it.ans) {
+        busy = true; sOk(); b.classList.add("ok"); i++;
+        later(() => { if (i < T.items.length) { busy = false; draw(); } else { toast(pick(PRAISE)); later(() => done(starsBy(mistakes)), 500); } }, 650);
+      } else { sBad(); mistakes++; b.classList.add("bad"); setTimeout(() => b.classList.remove("bad"), 500); }
+    });
+  };
+  draw();
+};
+
+/* Masala: mot, shahdan qochish, rokirovka, vilka, aylanish */
+function forkCount(after, to) {
+  // Faqat yurgan donani qoldirib (boshqa oq donalarni olib tashlab), u nechta qora donaga hujum qilayotganini sanaymiz
+  const b = after.b.map((x, k) => (k === to || Chess.colorOf(x) !== "w") ? x : "");
+  let n = 0;
+  for (let s = 0; s < 64; s++) {
+    const p = after.b[s];
+    if (p && Chess.colorOf(p) === "b" && p !== "p" && Chess.attacked({ ...after, b }, s, "w")) n++;
+  }
+  return n;
+}
+
+TASKS.puzzle = (T, ctx, done) => {
+  let i = 0, mistakes = 0, st, sel = null, last = null, locked = false;
+  const off = T.offset || 0, total = T.total || T.items.length;   // «Masalalar» bo'limi joyidan davom etadi
+  sayPrompt(T.prompt);
+  const load = () => {
+    const it = T.items[i];
+    st = Chess.parse(it.fen); if (it.mirror) st = Chess.mirror(st);
+    sel = null; last = null; locked = false; draw();
+  };
+  const draw = () => {
+    const legal = Chess.legal(st);
+    const dots = sel !== null && P.hints ? new Set(legal.filter(m => m.from === sel).map(m => m.to)) : null;
+    const chk = Chess.inCheck(st, st.turn) ? Chess.kingSq(st, st.turn) : -1;
+    frame({ ...ctx, prompt: `${T.prompt} <span class="cnt">${off + i + 1} / ${total}</span>`,
+      body: boardHTML({ st, sel, dots, last, check: chk }), foot: `<span class="side">Oq yuradi</span>` });
+    onBoard($app, s => {
+      if (locked) return;
+      const p = st.b[s];
+      if (p && Chess.colorOf(p) === st.turn) { sel = s; draw(); return; }
+      if (sel === null) return;
+      const cand = legal.filter(m => m.from === sel && m.to === s);
+      if (!cand.length) { sBad(); toast("Bunday yurib bo'lmaydi", "bad"); sel = null; draw(); return; }
+      const m = cand.find(x => x.promo === "q") || cand[0];
+      const after = Chess.make(st, m), goal = T.items[i].goal;
+      let ok = false, msg = "";
+      if (goal === "mate") { const s2 = Chess.status(after); ok = s2 === "mate"; if (s2 === "stalemate") msg = "Bu PAT bo'ldi — durang! Boshqa yurish top."; }
+      else if (goal === "escape") ok = true;
+      else if (goal === "castle") ok = !!m.castle;
+      else if (goal === "fork") ok = forkCount(after, m.to) >= 2;
+      else if (goal === "promote") ok = !!m.promo;
+      locked = true; st = after; last = m; sel = null; draw();
+      if (ok) {
+        const pr = pick(PRAISE);
+        sOk(); if (goal === "mate") toast("MOT! " + pr, "ok", 1300, ["MOT!", pr]); else toast(pr); i++;
+        if (T.onSolve) T.onSolve(off + i);
+        later(() => { if (i < T.items.length) load(); else done(starsBy(mistakes)); }, 1200);
+      } else {
+        sBad(); mistakes++; toast(msg || "Yana bir o'ylab ko'r!", "bad", 1600);
+        later(load, 1300);
+      }
+    });
+  };
+  load();
+};
+
+/* O'yin: mini-o'yinlar va to'liq o'yin */
+TASKS.game = (T, ctx, done) => {
+  const R = T.rules || {};
+  let st, sel, last, hist, over, startMat;
+  // newScreen(): kompyuterning kutilayotgan yurishi bekor bo'ladi (aks holda «Qaytadan»dan keyin u oq uchun yurib qo'yardi)
+  const reset = () => { newScreen(); st = Chess.parse(T.fen); sel = null; last = null; hist = []; over = false; startMat = Chess.material(st, "w"); draw(); };
+
+  function verdict(s, mover, m) {
+    const opp = Chess.other(mover);
+    if (R.promoteWins && m.promo) return mover;
+    if (R.captureAllWins && Chess.pieceCount(s, opp) === 0) return mover;
+    if (R.lostPieceLoses && Chess.material(s, "w") < startMat) return "b";
+    const status = Chess.status(s);
+    if (status === "mate") return mover;
+    if (status === "stalemate") return "draw";
+    if (status === "nomoves") return R.noMovesLoses ? mover : "draw";
+    if (R.full) {
+      const left = s.b.filter(p => p && p !== "S");
+      if (left.length === 2) return "draw";
+      if (hist.length > 160) return "draw";
+    }
+    return null;
+  }
+
+  function finish(v) {
+    over = true;
+    let title, stars, say;
+    if (v === "w") {
+      const pr = pick(PRAISE);
+      title = R.full ? "Sen yutding! 🏆" : pr + " Sen yutding!"; say = R.full ? ["Sen yutding!"] : [pr, "Sen yutding!"];
+      stars = 3; sWin(); confetti();
+    }
+    else if (v === "draw") { title = "Durang! Hech kim yutmadi."; stars = 2; sOk(); }
+    else { title = "Bu safar raqib yutdi. Har bir mag'lubiyat — yangi dars!"; stars = 1; sBad(); }
+    speak(say || [title]);
+    const box = document.createElement("div"); box.className = "modal";
+    box.innerHTML = `<div class="card"><h2>${title}</h2>
+      <div class="stars">${"★".repeat(stars)}<span>${"★".repeat(3 - stars)}</span></div>
+      <div class="row"><button class="btn ghost" id="again">↻ Yana o'ynash</button><button class="btn" id="cont">Davom etish ▶</button></div></div>`;
+    document.body.appendChild(box);
+    box.querySelector("#again").onclick = () => { box.remove(); reset(); };
+    box.querySelector("#cont").onclick = () => { box.remove(); done(stars); };
+  }
+
+  function aiMove() {
+    if (over || st.turn !== "b") return;
+    const m = Chess.bestMove(st, T.ai || "easy");
+    if (!m) { const v = verdict(st, "w", {}); if (v) finish(v); return; }
+    hist.push(st); st = Chess.make(st, m); last = m; sMove(); draw();
+    const v = verdict(st, "b", m); if (v) { over = true; later(() => finish(v), 500); }
+  }
+
+  const draw = () => {
+    const legal = st.turn === "w" ? Chess.legal(st) : [];
+    const dots = sel !== null && P.hints ? new Set(legal.filter(m => m.from === sel).map(m => m.to)) : null;
+    const chk = Chess.inCheck(st, st.turn) ? Chess.kingSq(st, st.turn) : -1;
+    frame({ ...ctx, prompt: T.prompt, body: boardHTML({ st, sel, dots, last, check: chk }),
+      foot: `<button class="btn ghost" id="undo">↶ Ortga</button><span class="side">${st.turn === "w" ? "Sening navbating (oq)" : "Raqib o'ylayapti..."}</span><button class="btn ghost" id="rs">↻ Qaytadan</button>` });
+    document.getElementById("rs").onclick = reset;
+    document.getElementById("undo").onclick = () => {
+      if (over || hist.length < 2 || st.turn !== "w") return;
+      hist.pop(); st = hist.pop(); last = null; sel = null; draw();
+    };
+    onBoard($app, s => {
+      if (over || st.turn !== "w") return;
+      const p = st.b[s];
+      if (p && Chess.colorOf(p) === "w") { sel = s; draw(); return; }
+      if (sel === null) return;
+      const cand = legal.filter(m => m.from === sel && m.to === s);
+      if (!cand.length) {
+        sBad();
+        if (Chess.inCheck(st, "w")) toast("Shohingga shah! Avval uni qutqar", "bad", 1600);
+        else toast("Bunday yurib bo'lmaydi", "bad");
+        sel = null; draw(); return;
+      }
+      const m = cand.find(x => x.promo === "q") || cand[0];
+      hist.push(st); st = Chess.make(st, m); last = m; sel = null; sMove();
+      if (m.promo && !R.promoteWins) toast("Piyoda farzinga aylandi!");
+      draw();
+      const v = verdict(st, "w", m);
+      if (v) { over = true; later(() => finish(v), 400); return; }
+      later(aiMove, 550);
+    });
+  };
+  sayPrompt(T.prompt);
+  reset();
+};
+
+/* Boshlang'ich holatni terish */
+TASKS.setup = (T, ctx, done) => {
+  const START = "RNBQKBNR";
+  const st = Chess.parse("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/8 w - -");
+  let tray = "RNBQKBNR".split("").sort(() => Math.random() - 0.5), pickI = null, mistakes = 0;
+  sayPrompt(T.prompt);
+  const draw = () => {
+    const trayHTML = tray.map((p, k) => `<button class="tray${pickI === k ? " on" : ""}" data-k="${k}">${pieceHTML(p)}</button>`).join("");
+    frame({ ...ctx, prompt: T.prompt, body: boardHTML({ st }) + `<div class="trayrow">${trayHTML || "<b>Hammasi joyida!</b>"}</div>` });
+    $app.querySelectorAll(".tray").forEach(b => b.onclick = () => { pickI = Number(b.dataset.k); draw(); });
+    onBoard($app, s => {
+      if (!tray.length) return;
+      if (pickI === null) { toast("Avval pastdan donani tanla", "bad"); return; }
+      const p = tray[pickI];
+      if (s < 8 && !st.b[s] && START[s] === p) {
+        st.b[s] = p; tray.splice(pickI, 1); pickI = null; sOk(); draw();
+        if (!tray.length) { const pr = pick(PRAISE); toast("Parad tayyor! " + pr, "ok", 1300, ["Parad tayyor!", pr]); later(() => done(starsBy(mistakes)), 1000); }
+      } else {
+        mistakes++; sBad();
+        toast(p === "Q" ? "Esla: farzin o'z rangidagi katakda turadi!" : `${NAME[p.toLowerCase()]} bu yerda turmaydi`, "bad", 1500);
+      }
+    });
+  };
+  draw();
+};
+
+/* Sertifikat */
+TASKS.cert = (T, ctx, done) => {
+  sayPrompt("Ismingni yoz va sertifikatingni ol!");
+  const draw = () => {
+    const R = rankOf(doneCount());
+    frame({ ...ctx, prompt: "Ismingni yoz va sertifikatingni ol!", body: `
+      <input id="nm" class="name" maxlength="40" placeholder="Ismingni yoz" value="${esc(P.name || "")}">
+      <div class="cert" id="cert"><div class="cg">${["r", "n", "b", "q", "k", "b", "n", "r"].map(g => pieceHTML(g)).join("")}</div>
+        <h2>SERTIFIKAT</h2><p>Ushbu sertifikat</p><div class="cn" id="cn">${esc(P.name || "...")}</div>
+        <p>«Shaxmat qirolligi» kursini tamomlagani va<br><b>«${R ? R.name.toUpperCase() : "SHOH"}»</b> unvoniga sazovor bo'lgani uchun berildi.</p>
+        <div class="cs">★ ${totalStars()} yulduz</div></div>`,
+      foot: `<button class="btn ghost" id="pr">🖨 Chop etish</button><button class="btn big" id="fin">Tayyor ▶</button>` });
+    const inp = document.getElementById("nm");
+    inp.oninput = () => { P.name = inp.value; save(); document.getElementById("cn").textContent = inp.value || "..."; };
+    document.getElementById("pr").onclick = () => window.print();
+    document.getElementById("fin").onclick = () => done(3);
+  };
+  draw();
+};
+
+/* ---------------- Erkin o'yin, masalalar, sozlamalar ---------------- */
+function freePlay() {
+  newScreen(); CURSAY = null; speak("Raqibni tanla");
+  frame({ title: "Kompyuter bilan o'yna", body: `<div class="intro"><div class="big">${pieceHTML("N")}</div><h2>Raqibni tanla</h2></div>
+    <div class="opts col"><button class="opt" data-l="easy">😊 Oson</button><button class="opt" data-l="medium">🤔 O'rta</button></div>` });
+  $app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+    const T = { prompt: b.dataset.l === "easy" ? "Oson raqib. Omad!" : "O'rta raqib. Diqqat bilan o'yna!",
+      fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -", ai: b.dataset.l, rules: { full: true } };
+    TASKS.game(T, { title: "Erkin o'yin", back: freePlay }, () => freePlay());
+  });
+}
+
+/* Masalalar: yechilganlar soni saqlanadi (P.puz), keyingi safar shu joydan davom etadi */
+function puzzleMode() {
+  newScreen();
+  const start = (P.puz || 0) < PUZZLES.length ? (P.puz || 0) : 0;
+  const T = { prompt: "Bir yurishda MOT qo'y!", items: PUZZLES.slice(start).map(fen => ({ fen, goal: "mate" })),
+    offset: start, total: PUZZLES.length, onSolve: n => { P.puz = n; save(); } };
+  TASKS.puzzle(T, { title: "Masalalar: 1 yurishda mot", back: goHome }, () => {
+    sWin(); confetti(); toast("Hamma masalalar yechildi!"); later(goHome, 1500);
+  });
+}
+
+function settings() {
+  newScreen();
+  const row =(id, label, on) => `<label class="set"><span>${label}</span><input type="checkbox" id="${id}" ${on ? "checked" : ""}></label>`;
+  frame({ title: "Sozlamalar", body: `<div class="setbox">
+    ${row("sVoice", "🗣️ Ovoz (topshiriqlarni o'qib beradi)", P.voice)}
+    <div class="set"><span>🎤 Kim gapirsin?</span><span class="seg">
+      <button class="gbtn${P.voiceId !== "m" ? " on" : ""}" data-g="f">👩 Ayol</button>
+      <button class="gbtn${P.voiceId === "m" ? " on" : ""}" data-g="m">👨 Erkak</button></span></div>
+    ${row("sSound", "🔔 Tovush signallari", P.sound)}
+    ${row("sHints", "🟢 Yurish yo'llarini ko'rsatish (nuqtalar)", P.hints)}
+    ${row("sAll", "🔓 Hamma darslarni ochish (murabbiy uchun)", P.unlockAll)}
+    <button class="btn ghost danger" id="sReset">Natijalarni o'chirish</button>
+    <div class="about"><h3>Ota-onalar va murabbiy uchun</h3>
+      <p>Dastur «Shaxmat qirolligi» kursiga hamroh: 24 dars, har birida o'yin va topshiriqlar. Topshiriqlarni o'zbekcha ovoz o'qib beradi; 🔊 tugmasi qayta eshittiradi.</p>
+      <p>Natijalar faqat shu qurilmadagi brauzerda saqlanadi. Internet kerak emas.</p>
+      <p>Kuniga 15–20 daqiqa yetarli.</p>
+      <p style="font-size:13px;opacity:.7">Erkak ovozi: Meta MMS (facebook/mms-tts-uzb), CC BY-NC 4.0 litsenziyasi. Ayol ovozi: Microsoft Edge TTS (Madina).</p></div></div>` });
+  const bind = (id, key) => document.getElementById(id).onchange = e => { P[key] = e.target.checked; save(); };
+  bind("sVoice", "voice"); bind("sSound", "sound"); bind("sHints", "hints"); bind("sAll", "unlockAll");
+  $app.querySelectorAll(".gbtn").forEach(b => b.onclick = () => {
+    P.voiceId = b.dataset.g; save();
+    $app.querySelectorAll(".gbtn").forEach(x => x.classList.toggle("on", x === b));
+    speak(pick(PRAISE));
+  });
+  document.getElementById("sReset").onclick = () => {
+    if (confirm("Barcha yulduzlar, varaqalar natijasi va ism o'chiriladi. Rozimisiz?")) {
+      P.stars = {}; P.ws = {}; P.puz = 0; P.name = ""; save(); toast("Natijalar o'chirildi"); goHome();
+    }
+  };
+}
+
+window.__shq = { TASKS, LESSONS, P, player, frame, speak, sayPrompt, toast, pieceHTML, boardHTML, arrowsSVG, sOk, sBad, sWin,
+  confetti, save, goHome, pick, starsBy, later, newScreen, setSay: v => { CURSAY = v; }, stopVoice: () => { queue = []; player.pause(); } };
+goHome();
+})();
+
+/* Interaktiv varaqalar: sudrab qo'yish, bo'yash, strelka chizish, kartochka saralash (sichqoncha va barmoq). */
+(() => {
+const S = window.__shq;
+const $app = document.getElementById("app");
+const TOK = { apple: "🍎", star: "⭐", house: "🏠", sun: "☀️", heart: "❤️", flower: "🌸",
+  crown: "👑", circle: "⭕", n2: "2", n3: "3", n4: "4", n5: "5" };
+const tokHTML = k => k.startsWith("n") ? `<b class="numtok">${TOK[k]}</b>` : TOK[k];
+const sq = n => Chess.sqIdx(n), nm = s => Chess.sqName(s);
+const parse = f => Chess.parse(f.includes(" ") ? f : f + " w - -");
+const PRAISE = ["Barakalla!", "Zo'r!", "Ajoyib!", "Qoyil!", "Super!", "Juda yaxshi!"];
+P_ws(); function P_ws() { if (!S.P.ws) S.P.ws = {}; }
+
+/* ---------- javoblarni hisoblash ---------- */
+function reachFrom(st, from) {
+  return Chess.legal({ ...st, turn: "w" }, "w").filter(m => m.from === from && (!m.promo || m.promo === "q")).map(m => m.to);
+}
+function targetsOf(part) {
+  const T = part.targets, st = parse(part.fen);
+  if (Array.isArray(T)) return new Set(T.map(sq));
+  if (T.dark) return new Set([...Array(64).keys()].filter(s => ((s & 7) + (s >> 3)) % 2 === 0));
+  if (T.reach) return new Set(reachFrom(st, sq(T.reach)));
+  if (T.undef) return new Set([...Array(64).keys()].filter(s => Chess.colorOf(st.b[s]) === "b" && !Chess.attacked(st, s, "b")));
+  if (T.hit) { const r = new Set(reachFrom(st, sq(T.hit))); return new Set(part.apples.map(sq).filter(a => r.has(a))); }
+  return new Set();
+}
+function smpOf(fen) { const s = Chess.status(Chess.parse(fen)); return s === "mate" ? 1 : s === "stalemate" ? 2 : 0; }
+function qtuOf(fen) {
+  const st = Chess.parse(fen), checkers = new Set(), k = Chess.kingSq(st, st.turn), res = new Set();
+  for (let s = 0; s < 64; s++) if (Chess.colorOf(st.b[s]) === Chess.other(st.turn)) {
+    const b = st.b.map((x, i) => i === s || Chess.colorOf(x) !== Chess.other(st.turn) ? x : "");
+    if (Chess.attacked({ ...st, b }, k, Chess.other(st.turn))) checkers.add(s);
+  }
+  for (const m of Chess.legal(st)) {
+    if (checkers.has(m.to)) res.add("U");
+    else if (st.b[m.from].toLowerCase() === "k") res.add("Q"); else res.add("T");
+  }
+  return res;
+}
+function forkCount(after, to) {
+  const b = after.b.map((x, k) => (k === to || Chess.colorOf(x) !== "w") ? x : "");
+  let n = 0;
+  for (let s = 0; s < 64; s++) { const p = after.b[s]; if (p && Chess.colorOf(p) === "b" && p !== "p" && Chess.attacked({ ...after, b }, s, "w")) n++; }
+  return n;
+}
+function hasFork(st) { return Chess.legal(st).some(m => forkCount(Chess.make(st, m), m.to) >= 2); }
+function pathPar(st0, goal, bombs) {
+  const start = st0.b.findIndex(p => p && p !== "S"), piece = st0.b[start];
+  const seen = new Map([[start, 0]]), q = [start];
+  while (q.length) {
+    const s = q.shift(); if (s === goal) return seen.get(s);
+    const b = st0.b.slice(); b[start] = ""; b[s] = piece;
+    for (const m of Chess.legal({ b, turn: "w", castle: "", ep: -1 }, "w")) if (!bombs.has(m.to) && !seen.has(m.to)) { seen.set(m.to, seen.get(s) + 1); q.push(m.to); }
+  }
+  return 99;
+}
+
+/* ---------- interaktiv taxta ---------- */
+function ibHTML(m) {
+  let h = "";
+  for (let r = 7; r >= 0; r--) for (let f = 0; f < 8; f++) {
+    const s = r * 8 + f, cls = ["sq", (f + r) % 2 === 0 ? "d" : "l"];
+    if (m.blank) cls.push("blank");
+    if (m.paint && m.paint.has(s)) cls.push("painted");
+    if (m.hl && m.hl[s]) cls.push(m.hl[s]);
+    let inner = "";
+    const mk = m.marks && m.marks[s];
+    if (mk) inner += `<em class="mk">${{ apple: "🍎", star: "⭐", bomb: "💣" }[mk]}</em>`;
+    const p = m.st ? m.st.b[s] : "";
+    if (p === "S") inner += '<i class="stone"></i>'; else if (p) inner += S.pieceHTML(p);
+    if (m.tokens && m.tokens[s]) inner += `<em class="tk">${tokHTML(m.tokens[s])}</em>`;
+    if (m.coords !== false) { if (f === 0) inner += `<b class="rk">${r + 1}</b>`; if (r === 0) inner += `<b class="fl">${"abcdefgh"[f]}</b>`; }
+    h += `<div class="${cls.join(" ")}" data-sq="${s}">${inner}</div>`;
+  }
+  return `<div class="board ib${m.mode ? " m-" + m.mode : ""}">${h}${S.arrowsSVG(m.arrows)}<svg class="arrows live" viewBox="0 0 8 8"></svg></div>`;
+}
+const sqAt = (x, y) => { const e = document.elementFromPoint(x, y); const d = e && e.closest("[data-sq]"); return d ? Number(d.dataset.sq) : null; };
+const center = s => [(s & 7) + 0.5, 7 - (s >> 3) + 0.5];
+function liveArrow(svg, a, b, col = "#2F6FD0") {
+  if (a === null || b === null || a === b) { svg.innerHTML = ""; return; }
+  const [x1, y1] = center(a), [x2, y2] = center(b), ang = Math.atan2(y2 - y1, x2 - x1), hl = 0.38;
+  const p1 = [x2 - hl * Math.cos(ang - 0.5), y2 - hl * Math.sin(ang - 0.5)], p2 = [x2 - hl * Math.cos(ang + 0.5), y2 - hl * Math.sin(ang + 0.5)];
+  svg.innerHTML = `<line x1="${x1}" y1="${y1}" x2="${x2 - Math.cos(ang) * .3}" y2="${y2 - Math.sin(ang) * .3}" stroke="${col}" stroke-width=".14" stroke-linecap="round"/>
+    <polygon points="${x2},${y2} ${p1} ${p2}" fill="${col}"/>`;
+}
+
+/* Sudrash yordamchisi: element (yoki matn) barmoq ortidan yuradi, qo'yib yuborilganda nishon topiladi */
+function dragGhost(ev, html, onDrop) {
+  ev.preventDefault();
+  const g = document.createElement("div"); g.className = "dragghost"; g.innerHTML = html; document.body.appendChild(g);
+  const mv = e => { g.style.left = e.clientX + "px"; g.style.top = e.clientY + "px"; };
+  mv(ev);
+  const up = e => {
+    document.removeEventListener("pointermove", mv); document.removeEventListener("pointerup", up); document.removeEventListener("pointercancel", up);
+    g.remove(); onDrop(e.clientX, e.clientY);
+  };
+  document.addEventListener("pointermove", mv); document.addEventListener("pointerup", up); document.addEventListener("pointercancel", up);
+}
+
+/* ---------- varaq ro'yxati ---------- */
+const MODS = typeof MODULES !== "undefined" ? MODULES : [];
+const modOf = n => MODS.find(M => n >= M.from && n <= M.to) || { color: "#555" };
+function openWorksheets() {
+  S.newScreen(); S.setSay(null);
+  const cards = WORKSHEETS.map(W => {
+    const st = S.P.ws[W.code] || 0, M = modOf(W.n);
+    return `<button class="lsn ws done0" data-c="${W.code}" style="--mc:${M.color}"><span class="num">${W.code}</span>
+      <span class="wsi">${{ paint: "🖍️", place: "✋", arrows: "➡️", sort: "🗂️", qtu: "🛡️", choice: "❓" }[W.parts[0].t]}</span>
+      <span class="lt">${W.t}</span><small class="les">${W.n}-dars</small><span class="st">${"★".repeat(st)}${"☆".repeat(3 - st)}</span></button>`;
+  }).join("");
+  S.frame({ title: "📝 Varaqalar", body: `<p class="wsnote">Har bir varaq — darsdan keyingi o'yin-mashq. Sudra, bo'ya, strelka chiz!</p><div class="grid wsgrid">${cards}</div>` });
+  $app.querySelectorAll(".ws").forEach(b => b.onclick = () => runWorksheet(WORKSHEETS.find(W => W.code === b.dataset.c)));
+  setTimeout(() => Panda.wave(), 200);
+  S.speak("Salom! Bugun birga o'ynaymiz!");
+}
+window.openWorksheets = openWorksheets;
+
+function runWorksheet(W) {
+  let pi = 0; const res = [];
+  const next = stars => {
+    res.push(stars); pi++;
+    if (pi < W.parts.length) S.later(go, 500); else finish();
+  };
+  const go = () => {
+    S.newScreen();
+    const part = W.parts[pi];
+    let fin = false;   // «Tekshirish» ikki marta bosilsa ham qism bir marta tugaydi
+    const once = stars => { if (fin) return; fin = true; next(stars); };
+    const ctx = { title: `${W.code}. ${W.t}`, progress: W.parts.map((_, i) => `<i class="${i < pi ? "on" : i === pi ? "cur" : ""}"></i>`).join(""), back: openWorksheets };
+    if (part.t === "choice") S.TASKS.choice({ ...part, prompt: part.p }, ctx, once); else PARTS[part.t](part, ctx, once);
+  };
+  const finish = () => {
+    S.newScreen();
+    const stars = Math.max(1, Math.round(res.reduce((a, b) => a + b, 0) / res.length));
+    S.P.ws[W.code] = Math.max(S.P.ws[W.code] || 0, stars); S.save(); S.sWin(); S.confetti();
+    S.setSay(null); const pr = S.pick(PRAISE);
+    S.speak([pr, "Varaqa tugadi!"], { interrupt: false });
+    const i = WORKSHEETS.indexOf(W), nx = WORKSHEETS[i + 1];
+    S.frame({ title: `${W.code} tugadi`, back: openWorksheets, body: `<div class="intro"><div class="big introp"><div class="pwrap">${PANDA_SVG}</div></div>
+      <div class="stars">${"★".repeat(stars)}<span>${"★".repeat(3 - stars)}</span></div><h2>${pr}</h2><p>«${W.t}» varag'ini tugatding!</p></div>`,
+      foot: `<button class="btn ghost" id="wl">Varaqalar</button>${nx ? `<button class="btn big" id="wn">Keyingi: ${nx.code} ▶</button>` : ""}` });
+    setTimeout(() => Panda.happy(), 200);
+    document.getElementById("wl").onclick = openWorksheets;
+    const b = document.getElementById("wn"); if (b) b.onclick = () => runWorksheet(nx);
+  };
+  go();
+}
+
+const PARTS = {};
+const starsBy = S.starsBy;
+
+/* 1) Bo'yash */
+PARTS.paint = (part, ctx, done) => {
+  const st = parse(part.fen), targets = targetsOf(part), paint = new Set(), hl = {};
+  const marks = {}; (part.apples || []).forEach(a => marks[sq(a)] = "apple");
+  let mistakes = 0, checks = 0, fin = false;
+  S.sayPrompt(part.p);
+  const draw = () => {
+    S.frame({ ...ctx, prompt: `${part.p} <span class="cnt" id="pc">${paint.size}</span>`,
+      body: `<div class="tools"><span class="brush on">🖍️ Bo'yoq</span><button class="btn ghost sm" id="clr">🧽 Tozalash</button></div>` +
+        ibHTML({ st, paint, hl, marks, coords: part.coords, blank: part.targets.dark, mode: "paint" }),
+      foot: `<button class="btn big" id="chk">✅ Tekshirish</button>` });
+    const board = $app.querySelector(".board");
+    let erase = false, down = false;
+    const apply = s => {
+      if (s === null) return;
+      const el = board.querySelector(`[data-sq="${s}"]`);
+      if (erase) { paint.delete(s); el.classList.remove("painted", "bad", "hint"); }
+      else if (!paint.has(s)) { paint.add(s); el.classList.add("painted"); el.classList.remove("hint"); }
+      document.getElementById("pc").textContent = paint.size;
+    };
+    board.addEventListener("pointerdown", e => {
+      if (fin) return;
+      const s = sqAt(e.clientX, e.clientY); if (s === null) return;
+      e.preventDefault(); down = true; erase = paint.has(s); apply(s); board.setPointerCapture(e.pointerId);
+    });
+    board.addEventListener("pointermove", e => { if (down) apply(sqAt(e.clientX, e.clientY)); });
+    const stop = () => { down = false; };
+    board.addEventListener("pointerup", stop); board.addEventListener("pointercancel", stop);
+    document.getElementById("clr").onclick = () => { if (fin) return; paint.clear(); for (const k in hl) delete hl[k]; draw(); };
+    document.getElementById("chk").onclick = () => {
+      if (fin) return;
+      checks++;
+      for (const k in hl) delete hl[k];
+      const wrong = [...paint].filter(s => !targets.has(s)), miss = [...targets].filter(s => !paint.has(s));
+      if (!wrong.length && !miss.length) { fin = true; S.toast(S.pick(PRAISE)); S.later(() => done(starsBy(mistakes)), 900); return; }
+      mistakes++;
+      wrong.forEach(s => hl[s] = "bad");
+      if (checks >= 2 || !wrong.length) miss.forEach(s => hl[s] = "hint");
+      draw();
+      S.sBad();
+      S.toast(wrong.length ? "Qizil kataklar noto'g'ri. Ularni o'chir!" : "Hali hammasi emas. Sariq kataklarga qara!", "bad", 1800);
+    };
+  };
+  draw();
+};
+
+/* 2) Sudrab qo'yish */
+PARTS.place = (part, ctx, done) => {
+  const st = parse(part.fen), tokens = {}, tray = { ...part.tray }, goal = {};
+  for (const k in part.goal) goal[sq(k)] = part.goal[k];
+  let mistakes = 0;
+  S.sayPrompt(part.p);
+  const left = () => Object.values(tray).reduce((a, b) => a + b, 0);
+  const draw = () => {
+    const trayHTML = Object.entries(tray).filter(([, n]) => n > 0).map(([k, n]) =>
+      `<span class="tok" data-k="${k}">${tokHTML(k)}${n > 1 ? `<small>×${n}</small>` : ""}</span>`).join("");
+    S.frame({ ...ctx, prompt: part.p, body: ibHTML({ st, tokens, coords: part.coords, mode: "place" }) +
+      `<div class="trayrow tokrow">${trayHTML || ""}</div><p class="hint2">✋ Rasmni ushlab, kerakli katakka sudra</p>` });
+    $app.querySelectorAll(".tok").forEach(t => t.addEventListener("pointerdown", e => {
+      const k = t.dataset.k;
+      dragGhost(e, tokHTML(k), (x, y) => {
+        const s = sqAt(x, y); if (s === null) return;
+        if (goal[s] === k && !tokens[s]) {
+          tokens[s] = k; tray[k]--; S.sOk(); Panda.happy(); draw();
+          if (!left()) { S.toast(S.pick(PRAISE)); S.later(() => done(starsBy(mistakes)), 900); }
+        } else { mistakes++; S.sBad(); S.toast("Bu katakka emas. Yana urinib ko'r!", "bad", 1500); }
+      });
+    }));
+  };
+  draw();
+};
+
+/* 3) Strelka chizish: chiziq, yo'l, mot, vilka */
+PARTS.arrows = (part, ctx, done) => {
+  let st = parse(part.fen); (part.stones || []).forEach(s => st.b[sq(s)] = "S");
+  const st0 = { ...st, b: st.b.slice() };
+  const bombs = new Set((part.bombs || []).map(sq)), goal = part.goal ? sq(part.goal) : -1;
+  const par = part.mode === "path" ? pathPar(st0, goal, bombs) : 0;
+  let arrows = [], moves = 0, mistakes = 0, busy = false;
+  S.sayPrompt(part.p);
+  const marks = {}; bombs.forEach(b => marks[b] = "bomb"); if (goal >= 0) marks[goal] = "star";
+  const fail = msg => { mistakes++; S.sBad(); S.toast(msg, "bad", 1500); };
+  const win = (msg, say) => { busy = true; const pr = S.pick(PRAISE); S.toast(msg ? msg.replace("{p}", pr) : pr, "ok", 1300, say ? say.map(x => x === "{p}" ? pr : x) : null); S.later(() => done(part.mode === "path" ? (moves <= par ? 3 : moves <= par + 2 ? 2 : 1) : starsBy(mistakes)), 1100); };
+  const onArrow = (a, b) => {
+    const A = nm(a), B = nm(b), df = Math.abs((a & 7) - (b & 7)), dr = Math.abs((a >> 3) - (b >> 3));
+    if (part.mode === "line") {
+      const ok = part.kind === "rank" ? dr === 0 : part.kind === "file" ? df === 0 : df === dr;
+      if (!ok) return fail({ rank: "Bu yotgan yo'l emas", file: "Bu tik yo'l emas", diag: "Bu qiyshiq yo'l emas" }[part.kind]);
+      if (Math.max(df, dr) < 2) return fail("Yo'l kamida uchta katakdan iborat bo'lsin");
+      arrows = [[A, B]]; draw(); return win();
+    }
+    const p = st.b[a];
+    if (!p || Chess.colorOf(p) !== "w") return fail("Avval donadan boshla");
+    const legal = Chess.legal({ ...st, turn: "w" }, "w").filter(m => m.from === a && m.to === b);
+    if (!legal.length) return fail(st.b[b] === "S" || (part.mode === "path" && blockedByStone(a, b)) ? "Toshdan o'tib bo'lmaydi!" : "Bu yurish qoidaga to'g'ri kelmaydi");
+    const m = legal.find(x => x.promo === "q") || legal[0];
+    if (part.mode === "path") {
+      if (bombs.has(b)) return fail("Bomba! Bu katakka tushib bo'lmaydi");
+      st = Chess.make({ ...st, turn: "w" }, m); st.turn = "w"; moves++; arrows.push([A, B]); S.sOk(); draw();
+      if (b === goal) { if (moves <= par) win("{p} Eng qisqa yo'l!", ["{p}", "Eng qisqa yo'l!"]); else win(); }
+      return;
+    }
+    const after = Chess.make(st, m);
+    if (part.mode === "mate") {
+      if (Chess.status(after) === "mate") { st = after; arrows = [[A, B]]; draw(); return win("MOT! {p}", ["MOT!", "{p}"]); }
+      return fail("Bu mot emas. Boshqa yurish top!");
+    }
+    if (part.mode === "fork") {
+      if (forkCount(after, b) >= 2) { arrows = [[A, B]]; draw(); return win(); }
+      return fail("Bu vilka emas. Yana urinib ko'r!");
+    }
+  };
+  function blockedByStone(a, b) {
+    const df = Math.sign((b & 7) - (a & 7)), dr = Math.sign((b >> 3) - (a >> 3));
+    let f = (a & 7) + df, r = (a >> 3) + dr;
+    while (f !== (b & 7) || r !== (b >> 3)) { if (st.b[r * 8 + f] === "S") return true; f += df; r += dr; }
+    return false;
+  }
+  const draw = () => {
+    S.frame({ ...ctx, prompt: part.p + (part.mode === "path" ? ` <span class="cnt">Yurishlar: ${moves}</span>` : ""),
+      body: ibHTML({ st, marks, arrows, mode: "arrows" }) + `<p class="hint2">➡️ Donani bosib turib, kerakli katakka sudra — strelka chiziladi</p>`,
+      foot: (part.allowNone ? `<button class="btn ghost" id="none">🚫 Vilka yo'q</button>` : "") +
+        (part.mode === "path" ? `<button class="btn ghost" id="rs">↻ Qaytadan</button>` : "") });
+    const board = $app.querySelector(".board"), live = board.querySelector(".live");
+    let from = null;
+    board.addEventListener("pointerdown", e => {
+      if (busy) return; const s = sqAt(e.clientX, e.clientY); if (s === null) return;
+      e.preventDefault(); from = s; board.setPointerCapture(e.pointerId);
+    });
+    board.addEventListener("pointermove", e => { if (from !== null) liveArrow(live, from, sqAt(e.clientX, e.clientY)); });
+    board.addEventListener("pointerup", e => {
+      if (from === null) return; const to = sqAt(e.clientX, e.clientY), a = from; from = null; live.innerHTML = "";
+      if (to !== null && to !== a) onArrow(a, to);
+    });
+    const none = document.getElementById("none");
+    if (none) none.onclick = () => { if (busy) return; if (!hasFork(st)) win("To'g'ri, bu yerda vilka yo'q!"); else fail("Bu yerda vilka bor. Topishga harakat qil!"); };
+    const rs = document.getElementById("rs");
+    if (rs) rs.onclick = () => { if (busy) return; st = { ...st0, b: st0.b.slice() }; arrows = []; moves = 0; draw(); };
+  };
+  draw();
+};
+
+/* 4) Kartochkani qutiga saralash */
+PARTS.sort = (part, ctx, done) => {
+  const cards = part.cards.map((c, i) => ({ ...c, i, ans: c.ans === "smp" ? smpOf(c.fen) : c.ans, placed: false }));
+  let mistakes = 0;
+  S.sayPrompt(part.p);
+  const cardHTML = c => {
+    if (c.glyph) return `<div class="card gl" data-i="${c.i}">${S.pieceHTML(c.glyph)}</div>`;
+    const st = parse(c.fen), arrows = c.move ? [[c.move.slice(0, 2), c.move.slice(2)]] : null;
+    return `<div class="card" data-i="${c.i}">${S.boardHTML({ st, arrows, coords: false, small: true }).replace('class="board small"', 'class="board mini"')}</div>`;
+  };
+  const draw = () => {
+    const boxes = part.boxes.map((b, k) => `<div class="sbox" data-b="${k}"><b>${b}</b><div class="sin">${
+      cards.filter(c => c.placed && c.ans === k).map(c => `<span class="done">${c.glyph ? S.pieceHTML(c.glyph) : "✔"}</span>`).join("")}</div></div>`).join("");
+    const rest = cards.filter(c => !c.placed);
+    S.frame({ ...ctx, prompt: `${part.p} <span class="cnt">${cards.length - rest.length} / ${cards.length}</span>`,
+      body: `<div class="cardrow">${rest.slice(0, 1).map(cardHTML).join("")}</div><div class="boxes">${boxes}</div>` +
+        `<p class="hint2">🗂️ Kartochkani ushlab, to'g'ri qutiga sudra</p>` });
+    $app.querySelectorAll(".card").forEach(el => el.addEventListener("pointerdown", e => {
+      const c = cards[Number(el.dataset.i)];
+      el.classList.add("lift");
+      dragGhost(e, el.innerHTML, (x, y) => {
+        el.classList.remove("lift");
+        const t = document.elementFromPoint(x, y), box = t && t.closest("[data-b]");
+        if (!box) return;
+        if (Number(box.dataset.b) === c.ans) {
+          c.placed = true; S.sOk(); Panda.happy(); draw();
+          if (cards.every(k => k.placed)) { S.toast(S.pick(PRAISE)); S.later(() => done(starsBy(mistakes)), 900); }
+        } else { mistakes++; S.sBad(); box.classList.add("nope"); setTimeout(() => box.classList.remove("nope"), 500); S.toast("Bu qutiga emas. Yana o'ylab ko'r!", "bad", 1500); }
+      });
+    }));
+  };
+  draw();
+};
+
+/* 5) Q-T-U tanlovi */
+PARTS.qtu = (part, ctx, done) => {
+  const ans = qtuOf(part.fen), pick = new Set();
+  let mistakes = 0, fin = false;
+  S.sayPrompt(part.p);
+  const st = Chess.parse(part.fen), chk = Chess.kingSq(st, st.turn);
+  const draw = () => {
+    const opt = [["Q", "Qochish"], ["T", "To'sish"], ["U", "Urish"]].map(([k, t]) =>
+      `<button class="opt qtu${pick.has(k) ? " on" : ""}" data-k="${k}"><b>${k}</b><small>${t}</small></button>`).join("");
+    S.frame({ ...ctx, prompt: part.p, body: S.boardHTML({ st, check: chk, small: true }) + `<div class="opts">${opt}</div>`,
+      foot: `<button class="btn big" id="chk">✅ Tekshirish</button>` });
+    $app.querySelectorAll(".qtu").forEach(b => b.onclick = () => { if (fin) return; const k = b.dataset.k; pick.has(k) ? pick.delete(k) : pick.add(k); draw(); });
+    document.getElementById("chk").onclick = () => {
+      if (fin) return;
+      if (!pick.size) { S.toast("Bir yoki bir nechta harfni tanla", "bad"); return; }
+      const ok = pick.size === ans.size && [...pick].every(k => ans.has(k));
+      if (ok) { fin = true; S.toast(S.pick(PRAISE)); S.later(() => done(starsBy(mistakes)), 900); }
+      else { mistakes++; S.sBad(); S.toast("Yana bir o'ylab ko'r!", "bad", 1500); }
+    };
+  };
+  draw();
+};
+
+window.__ws = { targetsOf, smpOf, qtuOf, hasFork, forkCount, pathPar, parse };
+})();
+
+/* «Jonli shaxmat»: keng ekranda ikki chetdagi bo'sh joyda donalar o'z qoidasi bo'yicha yurib turadi (faqat bezak). */
+(() => {
+  const W = { k: "♔", q: "♕", r: "♖", b: "♗", n: "♘", p: "♙" };
+  const B = { k: "♚", q: "♛", r: "♜", b: "♝", n: "♞", p: "♟" };
+  const pc = (g, white) => white
+    ? `<span class="pc w"><span class="f">${B[g]}︎</span><span class="o">${W[g]}︎</span></span>`
+    : `<span class="pc b">${B[g]}︎</span>`;
+  // [dona, oqmi, ustun, qator (0 — tepa), animatsiya, kechikish]
+  // Har bir donaning yo'li alohida — ular hech qachon bitta katakka tushmaydi
+  const LEFT = [["n", true, 0, 3, "lv-knight", 0], ["p", true, 1, 6, "lv-pawn-up", 0], ["p", true, 3, 6, "lv-pawn-up", 1.6], ["k", false, 3, 0, "lv-king", 0.8]];
+  const RIGHT = [["b", false, 0, 0, "lv-bishop", 0], ["r", true, 3, 6, "lv-rook", 0.5], ["q", true, 0, 6, "lv-queen", 2]];
+  const board = (pieces, caps) => {
+    let sq = "";
+    for (let r = 0; r < 7; r++) for (let f = 0; f < 4; f++) sq += `<i class="${(f + r) % 2 ? "d" : "l"}"></i>`;
+    const ps = pieces.map(([g, w, f, r, anim, d]) =>
+      `<b class="lp ${anim}" style="left:calc(var(--c)*${f});top:calc(var(--c)*${r});animation-delay:${d}s">${pc(g, w)}</b>`).join("");
+    return `<div class="lvb">${sq}${ps}</div><ul class="lvcap">${caps.map(c => `<li>${c}</li>`).join("")}</ul>`;
+  };
+  const html = `
+    <aside class="live left" aria-hidden="true"><h4>Jonli shaxmat</h4>${board(LEFT, ["♞ Ot — «G» harfi bilan sakraydi", "♟ Piyoda — faqat oldinga", "♚ Shoh — bir qadam"])}</aside>
+    <aside class="live right" aria-hidden="true"><h4>Jonli shaxmat</h4>${board(RIGHT, ["♝ Fil — qiyshiq yuradi", "♜ Ruh — to'g'ri yuradi", "♛ Farzin — har tomonga"])}</aside>`;
+  document.body.insertAdjacentHTML("beforeend", html);
+})();
+
+/* Kung-fu panda — o'zimiz chizgan qahramon (filmdagi emas). Ikki chetdagi «Jonli shaxmat» panellari tagida
+   mashq qiladi: zarba, yuqori tepki, salto, yonga siljish, «turna» holati, ta'zim. Faqat bezak, faqat CSS animatsiya. */
+(() => {
+  const K = "#1d1d1d";
+  const svg = `
+<svg class="kfp" viewBox="-60 -40 320 280" aria-hidden="true">
+  <ellipse class="k-shadow" cx="100" cy="234" rx="48" ry="6" fill="rgba(0,0,0,.14)"/>
+  <g class="k-all"><g class="k-flip"><g class="k-shift">
+    <g class="k-legL"><path d="M82 188 L77 220" stroke="${K}" stroke-width="22" stroke-linecap="round"/><ellipse cx="72" cy="226" rx="15" ry="9" fill="${K}"/></g>
+    <g class="k-legR"><path d="M118 188 L123 220" stroke="${K}" stroke-width="22" stroke-linecap="round"/><ellipse cx="128" cy="226" rx="15" ry="9" fill="${K}"/></g>
+    <ellipse cx="100" cy="160" rx="44" ry="42" fill="#fff" stroke="${K}" stroke-width="3"/>
+    <ellipse cx="102" cy="164" rx="25" ry="24" fill="#F6E9D9"/>
+    <path d="M57 170 Q100 186 143 170 L143 180 Q100 196 57 180 Z" fill="#C8402E"/>
+    <path d="M128 176 l10 18 l6 -3 l-8 -16 Z M126 176 l2 20 l7 0 l-2 -20 Z" fill="#A3301F"/>
+    <circle cx="127" cy="178" r="5" fill="#E0A526"/>
+    <g class="k-armL"><path d="M66 134 Q50 152 52 172" stroke="${K}" stroke-width="18" fill="none" stroke-linecap="round"/><circle cx="52" cy="176" r="10" fill="${K}"/></g>
+    <g class="k-armR"><path d="M134 134 Q150 152 148 172" stroke="${K}" stroke-width="18" fill="none" stroke-linecap="round"/><circle cx="148" cy="176" r="10" fill="${K}"/></g>
+    <g class="k-head">
+      <g class="k-tails"><path d="M56 50 Q30 44 14 58 Q30 54 40 62 Q24 70 18 86 Q36 70 56 62 Z" fill="#C8402E"/></g>
+      <circle cx="58" cy="32" r="19" fill="${K}"/><circle cx="142" cy="32" r="19" fill="${K}"/>
+      <circle cx="58" cy="32" r="8" fill="#555"/><circle cx="142" cy="32" r="8" fill="#555"/>
+      <ellipse cx="100" cy="72" rx="54" ry="48" fill="#fff" stroke="${K}" stroke-width="3"/>
+      <path d="M48 46 Q100 26 152 46 L150 58 Q100 40 50 58 Z" fill="#C8402E"/>
+      <ellipse cx="78" cy="72" rx="14" ry="18" fill="${K}" transform="rotate(-20 78 72)"/>
+      <ellipse cx="124" cy="72" rx="14" ry="18" fill="${K}" transform="rotate(20 124 72)"/>
+      <g class="k-eyes"><circle cx="80" cy="71" r="6.5" fill="#fff"/><circle cx="122" cy="71" r="6.5" fill="#fff"/>
+        <circle cx="82" cy="72" r="3.4" fill="${K}"/><circle cx="124" cy="72" r="3.4" fill="${K}"/></g>
+      <path d="M70 60 L88 64 M132 60 L114 64" stroke="${K}" stroke-width="3.5" stroke-linecap="round"/>
+      <ellipse cx="64" cy="94" rx="8" ry="4.5" fill="#FFB3B3" opacity=".7"/><ellipse cx="138" cy="94" rx="8" ry="4.5" fill="#FFB3B3" opacity=".7"/>
+      <ellipse cx="102" cy="89" rx="7.5" ry="5.5" fill="${K}"/>
+      <path d="M90 99 Q102 108 114 99" stroke="${K}" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+  </g></g></g>
+</svg>`;
+  document.querySelectorAll(".live").forEach(a => a.insertAdjacentHTML("beforeend", `<div class="kf">${svg}</div>`));
+})();
+
+/* Veb-versiya (PWA) qo'shimchasi: faqat build_web.py yig'gan saytda ishlaydi.
+   1) Ovoz alohida faylda: faqat tanlangan ovoz yuklanadi (ikkalasi birga ~9 MB, bittasi ~4-5 MB).
+   2) Service worker: bir marta ochilgandan keyin dastur internetsiz ishlaydi.
+   3) Ota-onaga «telefonga o'rnatish» yo'riqnomasi (Android tugmasi / iPhone ko'rsatmasi).
+   Klasslar «shq-» bilan boshlanadi — app.js dagi umumiy nomlar bilan to'qnashmasligi uchun. */
+(() => {
+const KEY = "shaxmat-qirolligi-v1", AF = window.SHQ_AUDIO || {}, AUDIO_CACHE = "shq-audio";
+const store = {
+  get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} },
+};
+const voiceId = () => { try { return JSON.parse(store.get(KEY) || "{}").voiceId || "m"; } catch (e) { return "m"; } };
+
+const css = document.createElement("style");
+css.textContent = `
+.shq-badge{position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:60;background:#1F3B57;color:#fff;
+  border-radius:20px;padding:7px 14px;font-size:14px;box-shadow:0 3px 10px rgba(0,0,0,.2);pointer-events:none}
+.shq-badge.shq-err{background:#B5523B}
+.shq-inst{position:fixed;left:8px;right:8px;bottom:8px;z-index:60;max-width:560px;margin:0 auto;background:#fff;color:#24303C;
+  border-radius:16px;padding:12px 40px 12px 14px;box-shadow:0 6px 24px rgba(0,0,0,.22);border-top:5px solid #E0A526;font-size:15px;line-height:1.4}
+.shq-inst b{color:#1F3B57}
+.shq-inst .shq-go{display:inline-block;margin-top:8px;border:0;border-radius:12px;padding:9px 16px;font-size:15px;font-weight:700;
+  background:#2E7D6B;color:#fff;cursor:pointer}
+.shq-inst .shq-x{position:absolute;top:6px;right:6px;width:32px;height:32px;border:0;border-radius:50%;background:#F3E3C7;
+  color:#24303C;font-size:16px;cursor:pointer}
+body.shq-pad{padding-bottom:150px}`;
+document.head.appendChild(css);
+
+/* ---------- 1) Ovozni yuklash ---------- */
+let badge = null;
+function showBadge(text, err) {
+  if (!badge) { badge = document.createElement("div"); document.body.appendChild(badge); }
+  badge.className = "shq-badge" + (err ? " shq-err" : ""); badge.textContent = text;
+}
+const hideBadge = () => { if (badge) { badge.remove(); badge = null; } };
+
+const loading = {};
+function loadVoice(v) {
+  if (!AF[v]) return Promise.resolve(false);
+  if (loading[v]) return loading[v];
+  if (hasVoice(v)) return Promise.resolve(true);
+  showBadge("🔊 Ovoz yuklanmoqda…");
+  return loading[v] = new Promise(ok => {
+    const s = document.createElement("script"); s.src = AF[v];
+    s.onload = () => { hideBadge(); keepVoice(v); ok(true); };
+    s.onerror = () => {
+      delete loading[v]; s.remove();
+      showBadge("🔇 Ovoz yuklanmadi. Internetni yoqib, dasturni qayta oching.", true);
+      setTimeout(hideBadge, 6000); ok(false);
+    };
+    document.head.appendChild(s);
+  });
+}
+/* const AUDIO_M global leksik nom bo'ladi, window xususiyati emas — shuning uchun tekshiruv eval orqali */
+const hasVoice = v => { try { return (0, eval)(`typeof AUDIO_${v.toUpperCase()} !== "undefined"`); } catch (e) { return false; } };
+
+/* Ovoz service worker keshida turishini ta'minlash (birinchi ochilishda sahifa hali SW nazoratida bo'lmaydi) */
+function keepVoice(v) {
+  if (!("caches" in window) || !navigator.serviceWorker) return;
+  navigator.serviceWorker.ready.then(() => caches.open(AUDIO_CACHE)).then(c =>
+    c.match(AF[v]).then(hit => hit || c.add(AF[v]))).catch(() => {});
+}
+
+function startVoice() {
+  const v = voiceId();
+  if (hasVoice(v)) return;
+  loadVoice(v);
+}
+
+/* Sozlamalarda ovoz almashtirilsa — yangisini yuklab, maqtovni qayta aytadi */
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest(".gbtn");
+  if (!b || hasVoice(b.dataset.g)) return;
+  loadVoice(b.dataset.g).then(ok => {
+    if (ok && voiceId() === b.dataset.g && window.__shq) window.__shq.speak("Barakalla!");
+  });
+}, true);
+
+/* ---------- 2) Internetsiz ishlash ---------- */
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+  /* Brauzer xotirani tozalab yubormasligi uchun (yulduzlar va progress yo'qolmasin) */
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+}
+
+/* ---------- 3) Telefonga o'rnatish yo'riqnomasi ---------- */
+const HIDE_KEY = "shq-install-hidden";
+const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const ua = navigator.userAgent;
+const isIOS = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const isMobile = isIOS || /android|mobile/i.test(ua);
+const inApp = /telegram|instagram|fban|fbav|line\//i.test(ua);
+let prompt = null, box = null;
+
+function hiddenRecently() { const t = Number(store.get(HIDE_KEY) || 0); return Date.now() - t < 3 * 864e5; }
+function closeBox(remember) {
+  if (box) { box.remove(); box = null; document.body.classList.remove("shq-pad"); }
+  if (remember) store.set(HIDE_KEY, String(Date.now()));
+}
+function showBox(html, withButton) {
+  if (standalone || hiddenRecently()) return;
+  closeBox(false);
+  box = document.createElement("div"); box.className = "shq-inst"; box.setAttribute("role", "dialog");
+  box.innerHTML = `<button class="shq-x" aria-label="Yopish">✕</button>${html}` +
+    (withButton ? `<br><button class="shq-go">📲 O'rnatish</button>` : "");
+  document.body.appendChild(box); document.body.classList.add("shq-pad");
+  box.querySelector(".shq-x").onclick = () => closeBox(true);
+  const go = box.querySelector(".shq-go");
+  if (go) go.onclick = async () => {
+    if (!prompt) return;
+    prompt.prompt();
+    const r = await prompt.userChoice.catch(() => null); prompt = null;
+    closeBox(!r || r.outcome !== "accepted");
+  };
+}
+
+addEventListener("beforeinstallprompt", e => {
+  e.preventDefault(); prompt = e;
+  showBox(`<b>Dasturni telefonga o'rnating.</b> Keyin u ikonka bilan ochiladi va internetsiz ishlaydi.`, true);
+});
+addEventListener("appinstalled", () => closeBox(true));
+
+/* Android'da tugma chiqmasa (Telegram ichida, eski brauzer) yoki iPhone bo'lsa — qo'lda ko'rsatma */
+setTimeout(() => {
+  if (prompt || box || standalone || !isMobile) return;
+  if (inApp) showBox(`<b>Dastur Telegram ichida ochildi.</b> Telefonga o'rnatish uchun yuqoridagi <b>⋮</b> yoki <b>…</b>
+    tugmasini bosing va <b>«Brauzerda ochish»</b>${isIOS ? " (Safari)" : " (Chrome)"} ni tanlang.`);
+  else if (isIOS) showBox(`<b>iPhone'ga o'rnatish:</b> pastdagi <b>«Ulashish»</b> tugmasini (kvadrat va ⬆ strelka) bosing →
+    <b>«На экран Домой»</b> / <b>«Add to Home Screen»</b>. Keyin dastur ikonka bilan ochiladi va internetsiz ishlaydi.`);
+  else showBox(`<b>Telefonga o'rnatish:</b> brauzer menyusini (<b>⋮</b>) oching →
+    <b>«Ilovani o'rnatish»</b> yoki <b>«Bosh ekranga qo'shish»</b>.`);
+}, 2500);
+
+startVoice();
+window.__shqWeb = { loadVoice, hasVoice, showBox, closeBox };
+})();
+
+</script>
+</body>
+</html>
