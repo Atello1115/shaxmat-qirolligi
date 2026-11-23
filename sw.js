@@ -1,7 +1,7 @@
-/* Service worker: dastur bir marta ochilgach internetsiz ishlaydi. build_web.py 8da898b6, ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"], ["audio_m.12d65ae7.js", "audio_f.c6667212.js"] ni to'ldiradi.
+/* Service worker: dastur bir marta ochilgach internetsiz ishlaydi. build_web.py 186b037f, ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"], ["audio_m.12d65ae7.js", "audio_f.c6667212.js"] ni to'ldiradi.
    - Asosiy fayllar (shell) har versiyada alohida keshda; eski versiya keshi o'chiriladi.
    - Ovoz fayllari nomida xesh bor va ular «shq-audio» keshida turadi: ovoz o'zgarmasa, qayta yuklanmaydi. */
-const V = "8da898b6", SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"], AUDIO = ["audio_m.12d65ae7.js", "audio_f.c6667212.js"];
+const V = "186b037f", SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"], AUDIO = ["audio_m.12d65ae7.js", "audio_f.c6667212.js"];
 const SC = "shq-shell-" + V, AC = "shq-audio";
 const isAudio = url => AUDIO.some(a => new URL(url).pathname.endsWith("/" + a));
 

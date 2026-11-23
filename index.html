@@ -13,6 +13,20 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Shaxmat qirolligi</title>
+<script>
+/* Xato bo'lsa — oq sahifa o'rniga ekranga sababini chiqaradi (iPhone'da konsol ko'rinmaydi) */
+window.__shqErr = [];
+window.addEventListener("error", function (e) {
+  var m = (e && e.message) || "noma'lum xato";
+  if (e && e.filename) m += " @ " + String(e.filename).split("/").pop() + ":" + e.lineno + ":" + e.colno;
+  window.__shqErr.push(m);
+  if (window.__shq_booted) return;
+  var b = document.getElementById("shq-boot");
+  if (b) b.innerHTML = "<b>Dastur ochilmadi.</b><br>Sahifani yangilab ko'ring. Yana chiqsa, shu ekranni rasmga olib murabbiyga yuboring." +
+    "<pre style='white-space:pre-wrap;font-size:12px;text-align:left;background:#f3e3c7;padding:8px;border-radius:8px'>" +
+    window.__shqErr.join("\n").replace(/</g, "&lt;") + "\n" + navigator.userAgent + "</pre>";
+});
+</script>
 <style>
 :root{--navy:#1F3B57;--gold:#E0A526;--teal:#2E7D6B;--red:#B5523B;--bg:#FFF9EE;--card:#FFFFFF;--ink:#24303C;--muted:#6B7785;
   --sqL:#F3E3C7;--sqD:#C9A27A;--bs:min(92vw,58vh,540px)}
@@ -264,7 +278,7 @@ button{font-family:inherit;cursor:pointer}
 </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="app"><div id="shq-boot" style="max-width:520px;margin:30vh auto 0;padding:0 16px;text-align:center;font-size:18px;color:#1F3B57">♚ Shaxmat qirolligi yuklanmoqda…</div></div>
 <noscript>Bu dastur ishlashi uchun brauzerda JavaScript yoqilgan bo'lishi kerak.</noscript>
 <script>window.SHQ_AUDIO = {"m": "audio_m.12d65ae7.js", "f": "audio_f.c6667212.js"};</script>
 <script>
@@ -2022,7 +2036,7 @@ document.addEventListener("click", e => {
 }, true);
 
 /* ---------- 2) Internetsiz ishlash ---------- */
-if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+if (navigator.serviceWorker && location.protocol.startsWith("http")) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
   /* Brauzer xotirani tozalab yubormasligi uchun (yulduzlar va progress yo'qolmasin) */
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
@@ -2076,7 +2090,11 @@ setTimeout(() => {
     <b>«Ilovani o'rnatish»</b> yoki <b>«Bosh ekranga qo'shish»</b>.`);
 }, 2500);
 
-startVoice();
+/* Ovoz (~4-5 MB) sahifa to'liq yuklangandan keyin olinadi: aks holda iPhone Safari yuklanish chizig'ini
+   ovoz tushguncha ushlab turadi va sekin internetda sahifa «ochilmayapti» bo'lib ko'rinadi. */
+if (document.readyState === "complete") setTimeout(startVoice, 50);
+else addEventListener("load", () => setTimeout(startVoice, 50));
+window.__shq_booted = true;
 window.__shqWeb = { loadVoice, hasVoice, showBox, closeBox };
 })();
 
